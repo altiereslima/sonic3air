@@ -50,8 +50,8 @@ ExtrasMenu::ExtrasMenu(MenuBackground& menuBackground) :
 	// Build up tab menu entries
 	mTabMenuEntries.addEntry("", 0)
 					.addOption("EXTRAS",	   Tab::Id::EXTRAS)
-					.addOption("SECRETS",	   Tab::Id::SECRETS)
-					.addOption("ACHIEVEMENTS", Tab::Id::ACHIEVEMENTS);
+					.addOption("SEGREDOS",	   Tab::Id::SECRETS)
+					.addOption("CONQUISTAS", Tab::Id::ACHIEVEMENTS);
 
 	for (int i = 0; i < 3; ++i)
 	{
@@ -124,7 +124,7 @@ void ExtrasMenu::onFadeIn()
 			}
 		}
 
-		entries.addEntry("Back", BACK);
+		entries.addEntry("Voltar", BACK);
 	}
 
 	// Rebuild secrets, because hidden secrets may have been added
@@ -144,7 +144,7 @@ void ExtrasMenu::onFadeIn()
 			entries.addEntry(secret.mName, secret.mType);
 		}
 
-		entries.addEntry("Back", BACK);
+		entries.addEntry("Voltar", BACK);
 	}
 
 	// Rebuild achievements, because their order (but not their number) can change over time
@@ -164,7 +164,7 @@ void ExtrasMenu::onFadeIn()
 			}
 		}
 
-		entries.addEntry("Back", BACK);
+		entries.addEntry("Voltar", BACK);
 	}
 
 	mMenuBackground->showPreview(false);
@@ -360,8 +360,8 @@ void ExtrasMenu::render()
 
 		if (!showExtrasMenuTabContent(tabIndex))
 		{
-			const char* text2 = EngineMain::getDelegate().useDeveloperFeatures() ? "because Dev Mode is active" : "because Debug Mode is active";
-			drawer.printText(global::mSonicFontB, Recti(baseX, py + 22, 0, 0), "Achievements are locked", 5, Color(1.0f, 0.75f, 0.5f, alpha));
+			const char* text2 = EngineMain::getDelegate().useDeveloperFeatures() ? "porque o Modo Desenvolvedor esta ativo" : "because Debug Mode is active";
+			drawer.printText(global::mSonicFontB, Recti(baseX, py + 22, 0, 0), "As conquistas estao bloqueadas", 5, Color(1.0f, 0.75f, 0.5f, alpha));
 			drawer.printText(global::mSonicFontB, Recti(baseX, py + 35, 0, 0), text2, 5, Color(1.0f, 0.75f, 0.5f, alpha));
 
 			if (mTailsYawning.getWidth() == 0)
@@ -427,12 +427,12 @@ void ExtrasMenu::render()
 				if (line == 1)
 				{
 					py += 15;
-					drawer.printText(global::mSonicFontB, Recti(baseX, py, 0, 10), String(0, "%d of %d achievements completed", mAchievementsCompleted, (int)SharedDatabase::getAchievements().size()), 5, Color(0.6f, 0.8f, 1.0f, alpha));
+					drawer.printText(global::mSonicFontB, Recti(baseX, py, 0, 10), String(0, "%d de %d conquistas completadas", mAchievementsCompleted, (int)SharedDatabase::getAchievements().size()), 5, Color(0.6f, 0.8f, 1.0f, alpha));
 					py += 16;
 				}
 
 				const SharedDatabase::Secret* secret = SharedDatabase::getSecret(entry.mData);
-				RMX_ASSERT(nullptr != secret, "Invalid secret ID");
+				RMX_ASSERT(nullptr != secret, "ID secreto invalido");
 				const bool isUnlocked = PlayerProgress::instance().isSecretUnlocked(entry.mData);
 
 				py += 8;
@@ -481,7 +481,7 @@ void ExtrasMenu::render()
 				}
 				else
 				{
-					String text(0, "Complete %d achievements to unlock", secret->mRequiredAchievements);
+					String text(0, "Complete %d conquistas para desbloquear", secret->mRequiredAchievements);
 					py += 19;
 					drawer.printText(global::mOxyfontTiny, Recti(px - 105, py, 0, 10), text, 1, color2);
 
@@ -492,14 +492,14 @@ void ExtrasMenu::render()
 			{
 				// Achievements
 				const SharedDatabase::Achievement* achievement = SharedDatabase::getAchievement(entry.mData);
-				RMX_ASSERT(nullptr != achievement, "Invalid achievement ID");
+				RMX_ASSERT(nullptr != achievement, "ID de conquista invalido");
 				const bool isComplete = (PlayerProgress::instance().getAchievementState(entry.mData) != 0);
 
 				const int newSection = isComplete ? 2 : 1;
 				if (section != newSection)
 				{
 					py += (line == 1) ? 15 : 30;
-					drawer.printText(global::mSonicFontB, Recti(baseX, py, 0, 10), isComplete ? "* Completed achievements *" : "* Open achievements *", 5, Color(0.6f, 0.8f, 1.0f, tabAlpha));
+					drawer.printText(global::mSonicFontB, Recti(baseX, py, 0, 10), isComplete ? "* Conquistas completadas *" : "* Abrir conquistas *", 5, Color(0.6f, 0.8f, 1.0f, tabAlpha));
 					py += 16;
 					section = newSection;
 

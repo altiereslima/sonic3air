@@ -42,15 +42,15 @@ ActSelectMenu::ActSelectMenu(MenuBackground& menuBackground) :
 				mZoneEntry->addOption(zone.mDisplayName, zoneId);
 				if (acts == 2)
 				{
-					mActEntry->addOption("Act 1", zoneId);
-					mActEntry->addOption("Act 2", zoneId + 1);
+					mActEntry->addOption("Ato 1", zoneId);
+					mActEntry->addOption("Ato 2", zoneId + 1);
 				}
 				else
 				{
 					if (zoneId == 0x1600)
-						mActEntry->addOption("Single Act", 0x1601);		// Special handling for HPZ
+						mActEntry->addOption("Ato unico", 0x1601);		// Special handling for HPZ
 					else
-						mActEntry->addOption("Single Act", zoneId);
+						mActEntry->addOption("Ato unico", zoneId);
 				}
 			}
 		}
@@ -61,7 +61,7 @@ ActSelectMenu::ActSelectMenu(MenuBackground& menuBackground) :
 		mCharacterEntry->addOption("Tails", 0x02);
 		mCharacterEntry->addOption("Knuckles", 0x03);
 
-		mMenuEntries.addEntry("Back", 0x10);
+		mMenuEntries.addEntry("Voltar", 0x10);
 	}
 
 	// Set defaults
@@ -231,7 +231,7 @@ void ActSelectMenu::render()
 	}
 
 	// Title text
-	drawer.printText(global::mSonicFontC, Recti(anchorX, 4, 0, 18), "ACT SELECT", 5, Color(1.0f, 1.0f, 1.0f, alpha));
+	drawer.printText(global::mSonicFontC, Recti(anchorX, 4, 0, 18), "ESCOLHER ATO", 5, Color(1.0f, 1.0f, 1.0f, alpha));
 
 	// Menu entries
 	const int positionY[] = { 116, 138, 160, 198 };

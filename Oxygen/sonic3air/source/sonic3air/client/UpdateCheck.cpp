@@ -40,7 +40,7 @@ namespace
 
 	const char* getReleaseChannelName()
 	{
-		const char* RELEASE_CHANNEL_NAMES[3] = { "stable", "preview", "test" };
+		const char* RELEASE_CHANNEL_NAMES[3] = { " ", " ", " " };
 		int& releaseChannel = ConfigurationImpl::instance().mGameServer.mUpdateCheck.mReleaseChannel;
 		releaseChannel = clamp(releaseChannel, 0, 2);
 		return RELEASE_CHANNEL_NAMES[releaseChannel];

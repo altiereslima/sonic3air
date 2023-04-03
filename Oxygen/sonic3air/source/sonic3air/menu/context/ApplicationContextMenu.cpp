@@ -30,16 +30,17 @@ void ApplicationContextMenu::initialize()
 	if (mItems.empty())
 	{
 		#if defined(PLATFORM_WINDOWS) || defined(PLATFORM_MAC)
-			#define DIRECTORY_STRING "folder"
+			#define DIRECTORY_STRING "pasta"
 		#else
 			#define DIRECTORY_STRING "directory"
 		#endif
 
-		mItems.emplace_back(Item { "Open saved data " DIRECTORY_STRING, Item::Function::OPEN_SAVED_DATA_DIRECTORY });
-		mItems.emplace_back(Item { "Open mods " DIRECTORY_STRING,		Item::Function::OPEN_MODS_DIRECTORY });
+		mItems.emplace_back(Item { "Abrir pasta de dados salvos", Item::Function::OPEN_SAVED_DATA_DIRECTORY });
+		mItems.emplace_back(Item { "Abrir pasta de mods", Item::Function::OPEN_MODS_DIRECTORY });
+
 	#if 0
 		// TODO: This does not work well on Windows
-		mItems.emplace_back(Item { "Open log file",						Item::Function::OPEN_LOGFILE });
+		mItems.emplace_back(Item { "Abrir arquivo de registro",						Item::Function::OPEN_LOGFILE });
 	#endif
 
 		mBaseInnerRect.set(2, 24, 210, 24);
@@ -104,7 +105,7 @@ void ApplicationContextMenu::render()
 
 		{
 			const Recti textRect(rect.x + 5, rect.y - 21, 0, rect.height);
-			drawer.printText(global::mOxyfontRegular, textRect, "Sonic 3 A.I.R.", 4);
+			drawer.printText(global::mOxyfontRegular, textRect, "Sonic 3", 4);
 		}
 
 		Item* clickedItem = nullptr;

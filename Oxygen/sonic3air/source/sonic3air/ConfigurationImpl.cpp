@@ -20,9 +20,9 @@ namespace
 	int getReleaseChannelValueForBuild()
 	{
 		const constexpr uint32 buildVariantHash = rmx::compileTimeFNV_32(BUILD_VARIANT);
-		if (buildVariantHash == rmx::compileTimeFNV_32("TEST"))
+		if (buildVariantHash == rmx::compileTimeFNV_32(""))
 			return 2;
-		else if (buildVariantHash == rmx::compileTimeFNV_32("PREVIEW") || buildVariantHash == rmx::compileTimeFNV_32("BETA"))	// Treat betas as previews
+		else if (buildVariantHash == rmx::compileTimeFNV_32("") || buildVariantHash == rmx::compileTimeFNV_32(""))	// Treat betas as previews
 			return 1;
 		else
 			return 0;
@@ -32,7 +32,7 @@ namespace
 
 void ConfigurationImpl::fillDefaultGameProfile(GameProfile& gameProfile)
 {
-	gameProfile.mShortName = "Sonic 3 A.I.R.";
+	gameProfile.mShortName = "Sonic 3";
 	gameProfile.mFullName = "Sonic 3 - Angel Island Revisited";
 
 	gameProfile.mRomCheck.mSize = 0x400000;

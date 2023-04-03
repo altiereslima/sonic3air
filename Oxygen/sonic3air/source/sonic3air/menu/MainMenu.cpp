@@ -46,15 +46,15 @@ MainMenu::MainMenu(MenuBackground& menuBackground) :
 	// Build up menu structure
 	{
 		mMenuEntries.reserve(6);
-		mMenuEntries.addEntry("NORMAL GAME", mainmenu::NORMAL_GAME);
-		mMenuEntries.addEntry("ACT SELECT",  mainmenu::ACT_SELECT);
-		mMenuEntries.addEntry("TIME ATTACK", mainmenu::TIME_ATTACK);
-		mMenuEntries.addEntry("OPTIONS",	 mainmenu::OPTIONS);
+		mMenuEntries.addEntry("JOGO NORMAL", mainmenu::NORMAL_GAME);
+		mMenuEntries.addEntry("ESCOLHER ATO",  mainmenu::ACT_SELECT);
+		mMenuEntries.addEntry("Duelo crono", mainmenu::TIME_ATTACK);
+		mMenuEntries.addEntry("OPCOES",	 mainmenu::OPTIONS);
 		mMenuEntries.addEntry("EXTRAS",		 mainmenu::EXTRAS);
 		mMenuEntries.addEntry("MODS",		 mainmenu::MODS);
 
 	#if !defined(PLATFORM_ANDROID) && !defined(PLATFORM_IOS)
-		mMenuEntries.addEntry("EXIT",		 mainmenu::EXIT);
+		mMenuEntries.addEntry("SAIR",		 mainmenu::EXIT);
 	#endif
 	}
 
@@ -105,6 +105,8 @@ void MainMenu::onFadeIn()
 	for (size_t i = 0; i < mMenuEntries.size(); ++i)
 	{
 		mMenuEntries[i].mAnimation.mVisibility = ((int)i == mMenuEntries.mSelectedEntryIndex) ? 1.0f : 0.0f;
+
+	// Prepare mod error output
 	}
 
 	// Check for unlocked secrets (needed when new game versions added secrets or reduced requirements)
@@ -285,17 +287,19 @@ void MainMenu::render()
 		px -= 6 + global::mSmallfont.getWidth(text);
 		if (EngineMain::getDelegate().useDeveloperFeatures())
 		{
-			drawer.printText(global::mSmallfont, Recti(px, 1, 0, 0), "DEV MODE", 3, Color(0.6f, 0.2f, 0.2f, mVisibility * 0.3f));
+			drawer.printText(global::mSmallfont, Recti(px, 1, 0, 0), "MODO DESENVOLVEDOR", 3, Color(0.6f, 0.2f, 0.2f, mVisibility * 0.3f));
 		}
 		else
 		{
 			const SharedDatabase::Setting* setting = SharedDatabase::getSetting(SharedDatabase::Setting::SETTING_FIX_GLITCHES);
 			if (nullptr != setting && setting->mCurrentValue < 2)
 			{
-				const char* txt = (setting->mCurrentValue == 0) ? "NO GLITCH FIXES" : "ONLY BASIC FIXES";
+				const char* txt = (setting->mCurrentValue == 0) ? "SEM CORRECOES" : "APENAS CORRECOES BASICAS";
 				drawer.printText(global::mSmallfont, Recti(px, 1, 0, 0), txt, 3, Color(0.6f, 0.2f, 0.2f, mVisibility * 0.3f));
 			}
 		}
+
+	// Mod errors
 	}
 
 	drawer.performRendering();

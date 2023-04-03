@@ -29,20 +29,20 @@ void SharedDatabase::initialize()
 
 	// Setup list of zones
 	{
-		mAllZones.emplace_back("aiz", "zone01_aiz", "Angel Island Zone",	0x00, 2, 2);
-		mAllZones.emplace_back("hcz", "zone02_hcz", "Hydrocity Zone",		0x01, 2, 2);
-		mAllZones.emplace_back("mgz", "zone03_mgz", "Marble Garden Zone",	0x02, 2, 2);
-		mAllZones.emplace_back("cnz", "zone04_cnz", "Carnival Night Zone",	0x03, 2, 2);
-		mAllZones.emplace_back("icz", "zone05_icz", "IceCap Zone",			0x05, 2, 2);
-		mAllZones.emplace_back("lbz", "zone06_lbz", "Launch Base Zone",		0x06, 2, 2);
-		mAllZones.emplace_back("mhz", "zone07_mhz", "Mushroom Hill Zone",	0x07, 2, 2);
-		mAllZones.emplace_back("fbz", "zone08_fbz", "Flying Battery Zone",	0x04, 2, 2);
-		mAllZones.emplace_back("soz", "zone09_soz", "Sandopolis Zone",		0x08, 2, 2);
-		mAllZones.emplace_back("lrz", "zone10_lrz", "Lava Reef Zone",		0x09, 2, 2);
-		mAllZones.emplace_back("hpz", "zone11_hpz", "Hidden Palace Zone",	0x16, 1, 0);	// Not for Time Attack
-		mAllZones.emplace_back("ssz", "zone12_ssz", "Sky Sanctuary Zone",	0x0a, 1, 1);	// Only Act 1
-		mAllZones.emplace_back("dez", "zone13_dez", "Death Egg Zone",		0x0b, 2, 2);
-		mAllZones.emplace_back("ddz", "zone14_ddz", "Doomsday Zone",		0x0c, 1, 0);
+		mAllZones.emplace_back("aiz", "zone01_aiz", "Zona Angel Island",	0x00, 2, 2);
+		mAllZones.emplace_back("hcz", "zone02_hcz", "Zona Hydrocity",		0x01, 2, 2);
+		mAllZones.emplace_back("mgz", "zone03_mgz", "Zona Marble Garden",	0x02, 2, 2);
+		mAllZones.emplace_back("cnz", "zone04_cnz", "Zona Carnival Night",	0x03, 2, 2);
+		mAllZones.emplace_back("icz", "zone05_icz", "Zona IceCap",			0x05, 2, 2);
+		mAllZones.emplace_back("lbz", "zone06_lbz", "Zona Launch Base",		0x06, 2, 2);
+		mAllZones.emplace_back("mhz", "zone07_mhz", "Zona Mushroom Hill",	0x07, 2, 2);
+		mAllZones.emplace_back("fbz", "zone08_fbz", "Zona Flying Battery",	0x04, 2, 2);
+		mAllZones.emplace_back("soz", "zone09_soz", "Zona Sandopolis",		0x08, 2, 2);
+		mAllZones.emplace_back("lrz", "zone10_lrz", "Zona Lava Reef",		0x09, 2, 2);
+		mAllZones.emplace_back("hpz", "zone11_hpz", "Zona Hidden Palace",	0x16, 1, 0);	// Not for Time Attack
+		mAllZones.emplace_back("ssz", "zone12_ssz", "Zona Sky Sanctuary",	0x0a, 1, 1);	// Only Act 1
+		mAllZones.emplace_back("dez", "zone13_dez", "Zona Death Egg",		0x0b, 2, 2);
+		mAllZones.emplace_back("ddz", "zone14_ddz", "Zona Doomsday",		0x0c, 1, 0);
 	}
 
 	// Setup gameplay settings
@@ -62,24 +62,24 @@ void SharedDatabase::initialize()
 			achievement.mImage = image;
 		};
 
-		addAchievement(Achievement::ACHIEVEMENT_300_RINGS,				"Attracted to shiny things", "Collect 300 rings without losing them.", "", "rings");
-		addAchievement(Achievement::ACHIEVEMENT_DOUBLE_INVINCIBILITY,	"Double dose of stars", "Open another invincibility monitor while still being invincible from the last one.", "", "invincibility");
-		addAchievement(Achievement::ACHIEVEMENT_CONTINUES,				"Old-fashioned life insurance", "Have 5 continues in one game.", "", "continues");
-		addAchievement(Achievement::ACHIEVEMENT_GOING_HYPER,			"Going Hyper", "Collect all 14 emeralds and transform to a Hyper form.", "", "hyperform");
-		addAchievement(Achievement::ACHIEVEMENT_SCORE,					"Score millionaire", "Reach a score of 1,000,000 points.", "", "score");
-		addAchievement(Achievement::ACHIEVEMENT_ELECTROCUTE,			"Electrofishing", "Defeat an underwater enemy by electrocution.", "", "electrocution");
-		addAchievement(Achievement::ACHIEVEMENT_LONGPLAY,				"Longplay", "Beat the game with any character.", "", "gamebeaten");
-		addAchievement(Achievement::ACHIEVEMENT_BS_PERFECT,				"Tidied up the place", "Complete a Blue Spheres stage with Perfect.", "", "perfect");
-		addAchievement(Achievement::ACHIEVEMENT_GS_EXIT_TOP,			"Is there an exit up there", "Reach the top of the Glowing Spheres bonus stage.", "", "glowingspheres");
-		addAchievement(Achievement::ACHIEVEMENT_SM_JACKPOT,				"Jackpot", "Win the Jackpot in the Slot Machines bonus stage.", "", "jackpot");
-		addAchievement(Achievement::ACHIEVEMENT_AIZ_TIMEATTACK,			"Bursting through the jungle", "Finish Angel Island Zone Act 1 in Time Attack in under 45 seconds.", "", "timeattack_aiz1");
-		addAchievement(Achievement::ACHIEVEMENT_MGZ_GIANTRINGS,			"Attracted to giant shiny things", "Enter or collect 6 giant rings in Marble Garden Zone Act 1 in a single run without dying in between.", "", "giantrings_mgz1");
-		addAchievement(Achievement::ACHIEVEMENT_ICZ_SNOWBOARDING,		"Greedy snowboarder", "Collect all 50 rings in the snow boarding section of IceCap Zone Act 1.", "", "snowboarding");
-		addAchievement(Achievement::ACHIEVEMENT_ICZ_KNUX_SUNRISE,		"Once see the sunrise", "Defeat the upper boss in IceCap Zone Act 1 with Knuckles (you may need a buddy for this).", "", "icecap1boss");
-		addAchievement(Achievement::ACHIEVEMENT_LBZ_STAY_DRY,			"Fluffy fur must not get wet", "Get through Launch Base Zone Act 2 without touching any water (requires A.I.R. level layouts).", "", "staydry");
-		addAchievement(Achievement::ACHIEVEMENT_MHZ_OPEN_MONITORS,		"Display smasher", "Open 18 monitors in Mushroom Hill Zone Act 1 with Knuckles.", "", "monitors");
-		addAchievement(Achievement::ACHIEVEMENT_FBZ_FREE_ANIMALS,		"Squirrels on a plane", "Free 35 animals in Flying Battery Zone Act 1 before the boss.", "", "animals");
-		addAchievement(Achievement::ACHIEVEMENT_SSZ_DECOYS,				"No touchy", "Fight the second boss in Sonic's Sky Sanctuary but pop at most one of the inflatable Mechas.", "", "decoys");
+		addAchievement(Achievement::ACHIEVEMENT_300_RINGS,				"Atraido por coisas brilhantes", "Coletar 300 aneis sem perde-los.", "", "rings");
+		addAchievement(Achievement::ACHIEVEMENT_DOUBLE_INVINCIBILITY,	"Dose dupla de estrelas", "Abra outro monitor de invencibilidade enquanto ainda estiver invencivel do ultimo.", "", "invincibility");
+		addAchievement(Achievement::ACHIEVEMENT_CONTINUES,				"Seguro de vida antiquado", "Ter 5 continues em um unico jogo.", "", "continues");
+		addAchievement(Achievement::ACHIEVEMENT_GOING_HYPER,			"Ficando Hiper", "Coletar as 14 esmeraldas e se transformar em uma forma Hiper.", "", "hyperform");
+		addAchievement(Achievement::ACHIEVEMENT_SCORE,					"Pontuacao milionaria", "Obter uma pontuacao de 1.000.000 de pontos.", "", "score");
+		addAchievement(Achievement::ACHIEVEMENT_ELECTROCUTE,			"Pesca eletrica", "Derrotar um inimigo aquatico por eletrocussao.", "", "electrocution");
+		addAchievement(Achievement::ACHIEVEMENT_LONGPLAY,				"Jogatina", "Concluir o jogo com qualquer personagem.", "", "gamebeaten");
+		addAchievement(Achievement::ACHIEVEMENT_BS_PERFECT,				"Limpeza do local", "Completar um estagio Esfera Azuis com perfeicao.", "", "perfect");
+		addAchievement(Achievement::ACHIEVEMENT_GS_EXIT_TOP,			"Tem uma saida la em cima?", "Chegar ao topo do fase bonus das Esferas Brilhantes.", "", "glowingspheres");
+		addAchievement(Achievement::ACHIEVEMENT_SM_JACKPOT,				"Premio acumulado", "Ganhar o premio acumulado no estagio bonus Caca-niqueis.", "", "jackpot");
+		addAchievement(Achievement::ACHIEVEMENT_AIZ_TIMEATTACK,			"Cortando caminho pela selva", "Concluir o Ato 1 da zona Angel Island no modo Duelo Crono em menos de 45 segundos.", "", "timeattack_aiz1");
+		addAchievement(Achievement::ACHIEVEMENT_MGZ_GIANTRINGS,			"Atraido por coisas gigantes e brilhantes", "Entre ou colete 6 aneis gigantes no Ato 1 da zona Marble Garden em uma unica jogada sem morrer no caminho.", "", "giantrings_mgz1");
+		addAchievement(Achievement::ACHIEVEMENT_ICZ_SNOWBOARDING,		"Snowboarder ganancioso", "Coletar todos os 50 aneis na secao de snowboarding do Ato 1 da zona IceCap.", "", "snowboarding");
+		addAchievement(Achievement::ACHIEVEMENT_ICZ_KNUX_SUNRISE,		"Ver o nascer do sol uma vez", "Derrotar o chefe superior no Ato 1 da zona IceCap com Knuckles (talvez precise de um amigo para isso).", "", "icecap1boss");
+		addAchievement(Achievement::ACHIEVEMENT_LBZ_STAY_DRY,			"Pelagem fofa nao pode ficar molhada", "Concluir o Ato 2 da zona Launch Base sem tocar em qualquer agua (requer o layout do nivel A.I.R).", "", "staydry");
+		addAchievement(Achievement::ACHIEVEMENT_MHZ_OPEN_MONITORS,		"Quebra de monitores", "Abra 18 monitores no Ato 1 da zona Mushroom Hill 1 com Knuckles.", "", "monitors");
+		addAchievement(Achievement::ACHIEVEMENT_FBZ_FREE_ANIMALS,		"Esquilos em um aviao", "Liberte 35 animais no Ato 1 da zona Flying Battery antes do chefe.", "", "animals");
+		addAchievement(Achievement::ACHIEVEMENT_SSZ_DECOYS,				"Nao toque", "Lute contra o segundo chefe no Sky Sanctuary do Sonic, mas estoure no maximo um dos Mechas inflaveis.", "", "decoys");
 
 		for (Achievement& achievement : mAchievements)
 		{
@@ -105,16 +105,16 @@ void SharedDatabase::initialize()
 			secret.mSerialized = serialized;
 		};
 
-		addSecret(Secret::SECRET_COMPETITION_MODE,	false, true,  false,  0, "Competition Mode", "As known from original Sonic 3 (& Knuckles).", "competitionmode");
-		addSecret(Secret::SECRET_DROPDASH,			false, true,  true,   3, "Sonic Drop Dash", "In the Options menu (in Controls), you can now activate Sonic's Drop Dash move for Normal Game and Act Select.", "dropdash");
-		addSecret(Secret::SECRET_KNUX_AND_TAILS,	false, true,  true,   5, "Knuckles & Tails Mode", "Play as Knuckles & Tails character combination in Normal Game and Act Select.", "knuckles_tails");
-		addSecret(Secret::SECRET_SUPER_PEELOUT,		false, true,  true,   7, "Sonic Super Peel-Out", "The Super Peel-Out move is available in the Options menu. This also unlocks \"Max Control\" Time Attack.", "superpeelout");
-		addSecret(Secret::SECRET_DEBUGMODE,			false, true,  true,  10, "Debug Mode", "Debug Mode can be activated in the Options menu (in Tweaks), and is available in Normal Game and Act Select.", "debugmode");
-		addSecret(Secret::SECRET_BLUE_SPHERE,		false, true,  true,  12, "Blue Sphere", "Adds the Blue Sphere game to Extras that is known from Sonic 1 locked on to Sonic & Knuckles.", "bluesphere");
-		addSecret(Secret::SECRET_LEVELSELECT,		true,  true,  true,   0, "Level Select", "Adds the original Sonic 3 & Knuckles Level Select menu to Extras.", "levelselect");
-		addSecret(Secret::SECRET_TITLE_SK,			true,  true,  true,   0, "Sonic & Knuckles Title", "You can now select the Sonic & Knuckles title screen in the Options menu.", "title_sk");
-		addSecret(Secret::SECRET_GAME_SPEED,		true,  true,  true,   0, "Game Speed Setting", "Ready for a new challenge? Make the game faster (or slower) in the Options menu.", "gamespeed");
-		addSecret(Secret::SECRET_DOOMSDAY_ZONE,		true,  false, true,   0, "Doomsday Zone", "", "");
+		addSecret(Secret::SECRET_COMPETITION_MODE,	false, true,  false,  0, "Modo competicao", "Como conhecido no Sonic 3 original (& Knuckles).", "competitionmode");
+		addSecret(Secret::SECRET_DROPDASH,			false, true,  true,   3, "Sonic Drop Dash", "No menu Opcoes (em Controles), voce agora pode ativar o movimento Drop Dash do Sonic para o modo Jogo Normal e Escolha de Ato", "dropdash");
+		addSecret(Secret::SECRET_KNUX_AND_TAILS,	false, true,  true,   5, "Modo Knuckles & Tails", "Jogue com a combinacao de personagens Knuckles e Tails no modo Jogo Normal e Escolha de Ato.", "knuckles_tails");
+		addSecret(Secret::SECRET_SUPER_PEELOUT,		false, true,  true,   7, "Sonic Super Arrancada", "O movimento Super Arrancada esta disponivel no menu Opcoes. Isso tambem desbloqueia o modo de jogo \"Controle Maximo\" na Escolha de Ato.", "superpeelout");
+		addSecret(Secret::SECRET_DEBUGMODE,			false, true,  true,  10, "Mode depuracao", "O Debug Mode depuracao pode ser ativado no menu Opcoes (em Ajustes), e esta disponivel no modo Jogo Normal e Escolha de Ato.", "debugmode");
+		addSecret(Secret::SECRET_BLUE_SPHERE,		false, true,  true,  12, "Esfera azul", "Adiciona o jogo Esfera Azul aos Extras que e conhecido por estar presente quando se conecta o jogo Sonic 1 ao Sonic & Knuckles.", "bluesphere");
+		addSecret(Secret::SECRET_LEVELSELECT,		true,  true,  true,   0, "Selecao de Nivel", "Adiciona o menu de Selecao de Nivel original do Sonic 3 & Knuckles aos Extras.", "levelselect");
+		addSecret(Secret::SECRET_TITLE_SK,			true,  true,  true,   0, "Titulo Sonic & Knuckles", "Agora voce pode selecionar a tela de titulo do Sonic & Knuckles no menu de Opcoes.", "title_sk");
+		addSecret(Secret::SECRET_GAME_SPEED,		true,  true,  true,   0, "Velocidade do jogo", "Pronto para um novo desafio? Ajuste a velocidade do jogo para mais rapido ou mais lento no menu de Opcoes.", "gamespeed");
+		addSecret(Secret::SECRET_DOOMSDAY_ZONE,		true,  false, true,   0, "Zana Doomsday", "", "");
 	}
 
 	mIsInitialized = true;

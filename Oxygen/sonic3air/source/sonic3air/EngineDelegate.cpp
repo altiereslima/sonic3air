@@ -38,7 +38,7 @@ const EngineDelegateInterface::AppMetaData& EngineDelegate::getAppMetaData()
 {
 	if (mAppMetaData.mTitle.empty())
 	{
-		mAppMetaData.mTitle = "Sonic 3 A.I.R.";
+		mAppMetaData.mTitle = "Sonic 3";
 		mAppMetaData.mIconFile = L"data/images/icon.png";
 		mAppMetaData.mWindowsIconResource = 101;
 		mAppMetaData.mBuildVersionString = BUILD_STRING;
@@ -60,8 +60,8 @@ AudioOutBase& EngineDelegate::createAudioOut()
 
 bool EngineDelegate::onEnginePreStartup()
 {
-	CrashHandler::setApplicationInfo(std::string("Sonic 3 A.I.R. v") + BUILD_STRING);
-	oxygen::Logging::setAssertBreakCaption(std::string("Sonic 3 A.I.R. - v") + BUILD_STRING);
+	CrashHandler::setApplicationInfo(std::string("Sonic 3 v") + BUILD_STRING);
+	oxygen::Logging::setAssertBreakCaption(std::string("Sonic 3 - v") + BUILD_STRING);
 
 	// Sanity check if the game is even extracted
 	{

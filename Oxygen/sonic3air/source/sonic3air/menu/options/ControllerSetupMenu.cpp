@@ -48,9 +48,9 @@ ControllerSetupMenu::ControllerSetupMenu(OptionsMenu& optionsMenu) :
 	mOptionsMenu(optionsMenu)
 {
 	mAssignmentType.addEntry("")
-					.addOption("Assign", (uint32)AssignmentType::ASSIGN)
-					.addOption("Append", (uint32)AssignmentType::APPEND)
-					.addOption("Remove", (uint32)AssignmentType::REMOVE);
+					.addOption("Atribuir", (uint32)AssignmentType::ASSIGN)
+					.addOption("Adicionar", (uint32)AssignmentType::APPEND)
+					.addOption("Remover", (uint32)AssignmentType::REMOVE);
 }
 
 ControllerSetupMenu::~ControllerSetupMenu()
@@ -318,18 +318,18 @@ void ControllerSetupMenu::render()
 	{
 		mMenuEntries.setSelectedIndexByValue(::_BACK);
 		py += 80;
-		drawer.printText(global::mSonicFontB, Recti(baseX, py, 0, 10), "No game controller found", 2, Color(0.6f, 0.8f, 1.0f, alpha));
+		drawer.printText(global::mSonicFontB, Recti(baseX, py, 0, 10), "Nenhum controle encontrado", 2, Color(0.6f, 0.8f, 1.0f, alpha));
 		py += 15;
 	}
 	else
 	{
 		if (Application::instance().hasKeyboard())
 		{
-			drawer.printText(global::mSonicFontB, Recti(baseX, py, 0, 10), "Select keyboard or game controller", 2, Color(0.6f, 0.8f, 1.0f, alpha));
+			drawer.printText(global::mSonicFontB, Recti(baseX, py, 0, 10), "Selecione o teclado ou o controle", 2, Color(0.6f, 0.8f, 1.0f, alpha));
 		}
 		else
 		{
-			drawer.printText(global::mSonicFontB, Recti(baseX, py, 0, 10), "Select game controller", 2, Color(0.6f, 0.8f, 1.0f, alpha));
+			drawer.printText(global::mSonicFontB, Recti(baseX, py, 0, 10), "Selecione o controle", 2, Color(0.6f, 0.8f, 1.0f, alpha));
 		}
 		py += 11;
 	}
@@ -359,7 +359,7 @@ void ControllerSetupMenu::render()
 			{
 				InputManager& inputManager = InputManager::instance();
 				const size_t buttonIndex = entry.mData - 0x10;
-				RMX_ASSERT(buttonIndex < device->mControlMappings.size(), "Invalid button index " << buttonIndex);
+				RMX_ASSERT(buttonIndex < device->mControlMappings.size(), "Indice de botao invalido " << buttonIndex);
 				if (buttonIndex < device->mControlMappings.size())	// It's unclear how, but an invalid index is possible and led to crashes for some players
 				{
 					const InputConfig::ControlMapping& mapping = device->mControlMappings[buttonIndex];
@@ -589,8 +589,8 @@ void ControllerSetupMenu::refreshGamepadList(bool forceUpdate)
 			else
 			{
 				entry.mOptions.clear();
-				entry.addOption("Keyboard Player 1", 0xfffe);
-				entry.addOption("Keyboard Player 2", 0xffff);
+				entry.addOption("Jogador 1 do teclado", 0xfffe);
+				entry.addOption("Jogador 2 do teclado", 0xffff);
 			}
 		}
 		else

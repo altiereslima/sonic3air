@@ -70,12 +70,12 @@ void PauseMenu::onFadeIn()
 	{
 		mMenuEntries.clear();
 		mMenuEntries.reserve(3);
-		mMenuEntries.addEntry("Continue", 0);
+		mMenuEntries.addEntry("Continuar", 0);
 		if (mRestartEnabled)
-			mMenuEntries.addEntry("Restart", 2);
+			mMenuEntries.addEntry("Reiniciar", 2);
 		if (!Game::instance().isInTimeAttackMode())
-			mMenuEntries.addEntry("Options", 1);
-		mMenuEntries.addEntry("Exit Game", 3);
+			mMenuEntries.addEntry("Opcoes", 1);
+		mMenuEntries.addEntry("Sair do jogo", 3);
 	}
 	mMenuEntries.mSelectedEntryIndex = 0;
 	mDialogEntries.reserve(3);
@@ -164,9 +164,9 @@ void PauseMenu::update(float timeElapsed)
 							mDialogVisibility = 0.0f;
 
 							mDialogEntries.clear();
-							mDialogEntries.addEntry("Continue", 0);
-							mDialogEntries.addEntry("Last checkpoint", 0x10);
-							mDialogEntries.addEntry("Restart act", 0x11);
+							mDialogEntries.addEntry("Continuar", 0);
+							mDialogEntries.addEntry("Ultimo ponto de checagem", 0x10);
+							mDialogEntries.addEntry("Reiniciar ato", 0x11);
 							mDialogEntries.mSelectedEntryIndex = 0;
 						}
 						break;
@@ -185,8 +185,8 @@ void PauseMenu::update(float timeElapsed)
 							mDialogVisibility = 0.0f;
 
 							mDialogEntries.clear();
-							mDialogEntries.addEntry("Continue", 0);
-							mDialogEntries.addEntry("Exit to Menu", 0x20);
+							mDialogEntries.addEntry("Continuar", 0);
+							mDialogEntries.addEntry("Sair para o menu", 0x20);
 							mDialogEntries.mSelectedEntryIndex = 0;
 						}
 						break;
@@ -375,7 +375,7 @@ void PauseMenu::render()
 			static const uint64 key = rmx::getMurmur2_64(std::string_view("@input_icon_button_Y"));
 			drawer.drawRect(Recti(0, py - 9, 175, 20), Color(0.0f, 0.0f, 0.0f, 0.8f));
 			drawer.drawSprite(Vec2i(12, py - 1), key);
-			drawer.printText(global::mOxyfontTiny, Recti(24, py, 0, 0), "Hide menu for clean screenshots", 4, Color(0.6f, 0.8f, 1.0f, 1.0f));
+			drawer.printText(global::mOxyfontTiny, Recti(24, py, 0, 0), "Ocultar menu para capturar tela", 4, Color(0.6f, 0.8f, 1.0f, 1.0f));
 		}
 
 		drawer.performRendering();

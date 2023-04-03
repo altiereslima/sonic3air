@@ -56,23 +56,23 @@ TimeAttackMenu::TimeAttackMenu(MenuBackground& menuBackground) :
 				mZoneEntry->addOption(zone.mDisplayName, zoneId);
 				if (acts == 2)
 				{
-					mActEntry->addOption("Act 1", zoneId);
-					mActEntry->addOption("Act 2", zoneId + 1);
+					mActEntry->addOption("Ato 1", zoneId);
+					mActEntry->addOption("Ato 2", zoneId + 1);
 				}
 				else
 				{
-					mActEntry->addOption("Single Act", zoneId);
+					mActEntry->addOption("Ato unico", zoneId);
 				}
 			}
 		}
 
 		mCharacterEntry = &mMenuEntries.addEntry();
 		mCharacterEntry->addOption("Sonic",    (uint32)CharacterOption::SONIC_CLASSIC);
-		mCharacterEntry->addOption("Sonic - Max Control", (uint32)CharacterOption::SONIC_MAXCONTROL);
+		mCharacterEntry->addOption("Sonic - Controle Maximo", (uint32)CharacterOption::SONIC_MAXCONTROL);
 		mCharacterEntry->addOption("Tails",    (uint32)CharacterOption::TAILS);
 		mCharacterEntry->addOption("Knuckles", (uint32)CharacterOption::KNUCKLES);
 
-		mMenuEntries.addEntry("Back", 0x10);
+		mMenuEntries.addEntry("Voltar", 0x10);
 	}
 
 	// Set defaults
@@ -134,7 +134,7 @@ void TimeAttackMenu::initialize()
 {
 	// Update Max Control unlocking
 	GameMenuEntry::Option* option = mCharacterEntry->getOptionByValue((uint32)CharacterOption::SONIC_MAXCONTROL);
-	RMX_CHECK(nullptr != option, "Option for Max Control not found", );
+	RMX_CHECK(nullptr != option, "Opcao para Controle Maximo não encontrada", );
 	if (nullptr != option)
 	{
 		option->mVisible = PlayerProgress::instance().isSecretUnlocked(SharedDatabase::Secret::SECRET_SUPER_PEELOUT);
@@ -268,7 +268,7 @@ void TimeAttackMenu::render()
 	}
 
 	// Title text
-	drawer.printText(global::mSonicFontC, Recti(anchorX, 4, 0, 18), "TIME ATTACK", 5, Color(1.0f, 1.0f, 1.0f, alpha));
+	drawer.printText(global::mSonicFontC, Recti(anchorX, 4, 0, 18), "DUELO CRONO", 5, Color(1.0f, 1.0f, 1.0f, alpha));
 
 	// Menu entries
 	const int positionY[] = { 116, 138, 160, 198 };

@@ -194,14 +194,14 @@ OptionsMenu::OptionsMenu(MenuBackground& menuBackground) :
 
 	// Build up tab menu entries
 	mTabMenuEntries.addEntry<OptionsMenuEntry>().initEntry("", option::_TAB_SELECTION)
-		.addOption("MODS",     Tab::Id::MODS)
-		.addOption("SYSTEM",   Tab::Id::SYSTEM)
-		.addOption("DISPLAY",  Tab::Id::DISPLAY)
-		.addOption("AUDIO",    Tab::Id::AUDIO)
-		.addOption("VISUALS",  Tab::Id::VISUALS)
-		.addOption("GAMEPLAY", Tab::Id::GAMEPLAY)
-		.addOption("CONTROLS", Tab::Id::CONTROLS)
-		.addOption("TWEAKS",   Tab::Id::TWEAKS);
+		.addOption("MODOS",     Tab::Id::MODS)
+		.addOption("SISTEMA",   Tab::Id::SYSTEM)
+		.addOption("TELA",  Tab::Id::DISPLAY)
+		.addOption("SOM",    Tab::Id::AUDIO)
+		.addOption("VISUAL",  Tab::Id::VISUALS)
+		.addOption("JOGO", Tab::Id::GAMEPLAY)
+		.addOption("CONTROLES", Tab::Id::CONTROLS)
+		.addOption("AJUSTES",   Tab::Id::TWEAKS);
 
 	for (int i = 0; i < Tab::Id::_NUM; ++i)
 	{
@@ -217,48 +217,48 @@ OptionsMenu::OptionsMenu(MenuBackground& menuBackground) :
 		Tab& tab = mTabs[Tab::Id::SYSTEM];
 		GameMenuEntries& entries = tab.mMenuEntries;
 
-		entries.addEntry<TitleMenuEntry>().initEntry("Update");
-		entries.addEntry<UpdateCheckMenuEntry>().initEntry("Check for updates", option::_CHECK_FOR_UPDATE);
+		entries.addEntry<TitleMenuEntry>().initEntry("Atualizacao");
+		entries.addEntry<UpdateCheckMenuEntry>().initEntry("Verificar por atualizacoes", option::_CHECK_FOR_UPDATE);
 		entries.addEntry<OptionsMenuEntry>()
 			.setUseSmallFont(true)
 			.initEntry("", option::RELEASE_CHANNEL)
-			.addOption("Stable updates", 0)
-			.addOption("Stable & preview", 1)
-			.addOption("All incl. test builds", 2);
+			.addOption("Atualizacoes estaveis", 0)
+			.addOption("Estavel e previa", 1)
+			.addOption("Todas incl. teste", 2);
 
-		entries.addEntry<TitleMenuEntry>().initEntry("Ghost Sync");
-		entries.addEntry<LabelMenuEntry>().initEntry("If enabled, Ghost Sync shares your position in the game and\nshows all other players online in the same stage as ghosts.", Color(0.8f, 0.8f, 1.0f));
+		entries.addEntry<TitleMenuEntry>().initEntry("Sincronizacao de fantasmas");
+		entries.addEntry<LabelMenuEntry>().initEntry("Se ativado, a sincronizacao de fantasmas compartilha sua posicao no jogo e\nmostra todos os outros jogadores online na mesma fase como fantasmas.", Color(0.8f, 0.8f, 1.0f));
 		entries.addEntry<OptionsMenuEntry>()
 			.setUseSmallFont(true)
-			.initEntry("Enable Ghost Sync", option::GHOST_SYNC)
-			.addOption("Disabled", 0)
-			.addOption("Enabled", 1);
+			.initEntry("Sincronizar fantasmas", option::GHOST_SYNC)
+			.addOption("Desativado", 0)
+			.addOption("Ativado", 1);
 
 		// TEST
 		//  -> TODO: Needs support for a label text like "Channel" and possibly some explanation text as well
 		//entries.addEntry<InputFieldMenuEntry>().initEntry(L"world");
 
-		entries.addEntry<TitleMenuEntry>().initEntry("More Info");
-		entries.addEntry<OptionsMenuEntry>().initEntry("Open Game Homepage", option::_OPEN_HOMEPAGE);
-		entries.addEntry<OptionsMenuEntry>().initEntry("Open Manual", option::_OPEN_MANUAL);
+		entries.addEntry<TitleMenuEntry>().initEntry("Mais informacoes");
+		entries.addEntry<OptionsMenuEntry>().initEntry("Abrir pagina inicial do jogo", option::_OPEN_HOMEPAGE);
+		entries.addEntry<OptionsMenuEntry>().initEntry("Abrir manual", option::_OPEN_MANUAL);
 
-		entries.addEntry<TitleMenuEntry>().initEntry("Debugging");
-		entries.addEntry<LabelMenuEntry>().initEntry("These settings are meant only for debugging very specific issues.\nIt's recommended to leave them at their default values.", Color(1.0f, 0.8f, 0.6f));
-
-		entries.addEntry<AdvancedOptionMenuEntry>()
-			.setDefaultValue(-1)
-			.initEntry("Script Optimization", option::SCRIPT_OPTIMIZATION)
-			.addOption("Auto (Default)", -1)
-			.addOption("Disabled", 0)
-			.addOption("Basic", 1)
-			.addOption("Full", 3);
+		entries.addEntry<TitleMenuEntry>().initEntry("Depuracao");
+		entries.addEntry<LabelMenuEntry>().initEntry("Essas configuracoes destinam-se apenas a depuracao de questoes muito especificas.\nE recomendavel deixa-las em seus valores padrao.", Color(1.0f, 0.8f, 0.6f));
 
 		entries.addEntry<AdvancedOptionMenuEntry>()
 			.setDefaultValue(-1)
-			.initEntry("Debug Game Recording", option::GAME_RECORDING_MODE)
-			.addOption("Auto (Default)", -1)
-			.addOption("Disabled", 0)
-			.addOption("Enabled", 1);
+			.initEntry("Otimizacao de scripts", option::SCRIPT_OPTIMIZATION)
+			.addOption("Auto (Padrao)", -1)
+			.addOption("Desativada", 0)
+			.addOption("Basica", 1)
+			.addOption("Completa", 3);
+
+		entries.addEntry<AdvancedOptionMenuEntry>()
+			.setDefaultValue(-1)
+			.initEntry("Gravar depuracao do jogo", option::GAME_RECORDING_MODE)
+			.addOption("Auto (Padrao)", -1)
+			.addOption("Desativado", 0)
+			.addOption("Ativado", 1);
 	}
 
 	// Display tab
@@ -267,74 +267,74 @@ OptionsMenu::OptionsMenu(MenuBackground& menuBackground) :
 		GameMenuEntries& entries = tab.mMenuEntries;
 
 
-		entries.addEntry<TitleMenuEntry>().initEntry("General");
+		entries.addEntry<TitleMenuEntry>().initEntry("Geral");
 
-		entries.addEntry<OptionsMenuEntry>().initEntry("Renderer:", option::RENDERER)
-			.addOption("Fail-Safe / Software", (uint32)Configuration::RenderMethod::SOFTWARE)
+		entries.addEntry<OptionsMenuEntry>().initEntry("Renderizador:", option::RENDERER)
+			.addOption("A prova de falhas / Software", (uint32)Configuration::RenderMethod::SOFTWARE)
 			.addOption("OpenGL Software", (uint32)Configuration::RenderMethod::OPENGL_SOFT)
 			.addOption("OpenGL Hardware", (uint32)Configuration::RenderMethod::OPENGL_FULL);
 
-		entries.addEntry<OptionsMenuEntry>().initEntry("Frame Sync:", option::FRAME_SYNC)
-			.addOption("V-Sync Off", 0)
-			.addOption("V-Sync On", 1)
-			.addOption("V-Sync + FPS Cap", 2);
+		entries.addEntry<OptionsMenuEntry>().initEntry("Sincronia de quadros:", option::FRAME_SYNC)
+			.addOption("V-Sync Desl.", 0)
+			.addOption("V-Sync Lig.", 1)
+			.addOption("V-Sync + Limite de FPS", 2);
 
-		entries.addEntry<OptionsMenuEntry>().initEntry("Upscaling:", option::UPSCALING)
-			.addOption("Integer Scale", 1)
-			.addOption("Aspect Fit", 0)
-			.addOption("Stretch 50%", 2)
-			.addOption("Stretch 100%", 3);
-			//.addOption("Scale To Fill", 4);	// Works, but shouldn't be an option, as it looks a bit broken
+		entries.addEntry<OptionsMenuEntry>().initEntry("Ampliacao:", option::UPSCALING)
+			.addOption("Escala inteira", 1)
+			.addOption("Ajuste de aspecto", 0)
+			.addOption("Esticar 50%", 2)
+			.addOption("Esticar 100%", 3);
+			//.addOption("Redimensionar para preencher", 4);	// Works, but shouldn't be an option, as it looks a bit broken
 
-		entries.addEntry<OptionsMenuEntry>().initEntry("Backdrop:", option::BACKDROP)
-			.addOption("Black", 0)
-			.addOption("Classic Box 1", 1)
-			.addOption("Classic Box 2", 2)
-			.addOption("Classic Box 3", 3);
+		entries.addEntry<OptionsMenuEntry>().initEntry("Fundo de cena:", option::BACKDROP)
+			.addOption("Preto", 0)
+			.addOption("Classico caixa 1", 1)
+			.addOption("Classico caixa 2", 2)
+			.addOption("Classico caixa 3", 3);
 
-		entries.addEntry<OptionsMenuEntry>().initEntry("Screen Filter:", option::FILTERING)
-			.addOption("Sharp", 0)
-			.addOption("Soft 1", 1)
-			.addOption("Soft 2", 2)
+		entries.addEntry<OptionsMenuEntry>().initEntry("Filtro de tela:", option::FILTERING)
+			.addOption("Afiado", 0)
+			.addOption("Suave 1", 1)
+			.addOption("Suave 2", 2)
 			.addOption("xBRZ", 3)
 			.addOption("HQ2x", 4)
 			.addOption("HQ3x", 5)
 			.addOption("HQ4x", 6);
 
 		entries.addEntry<OptionsMenuEntry>().initEntry("Scanlines:", option::SCANLINES)
-			.addOption("Off", 0)
+			.addOption("Desl.", 0)
 			.addOption("25%", 1)
 			.addOption("50%", 2)
 			.addOption("75%", 3)
 			.addOption("100%", 4);
 
-		entries.addEntry<OptionsMenuEntry>().initEntry("Background Blur:", option::BG_BLUR)
-			.addOption("Off", 0)
+		entries.addEntry<OptionsMenuEntry>().initEntry("Desfoque de fundo:", option::BG_BLUR)
+			.addOption("Desl.", 0)
 			.addOption("25%", 1)
 			.addOption("50%", 2)
 			.addOption("75%", 3)
 			.addOption("100%", 4);
 
 
-		entries.addEntry<TitleMenuEntry>().initEntry("Window Mode");
+		entries.addEntry<TitleMenuEntry>().initEntry("Modo janela");
 
-		entries.addEntry<OptionsMenuEntry>().initEntry("Current Screen:", option::WINDOW_MODE)
-			.addOption("Windowed", 0)
-			.addOption("Fullscreen", 1)
-			.addOption("Exclusive Fullscreen", 2);
+		entries.addEntry<OptionsMenuEntry>().initEntry("Tela atual:", option::WINDOW_MODE)
+			.addOption("Janela", 0)
+			.addOption("Tela cheia", 1)
+			.addOption("Tela cheia exclusiva", 2);
 
-		entries.addEntry<OptionsMenuEntry>().initEntry("Startup Screen:", option::WINDOW_MODE_STARTUP)
-			.addOption("Windowed", 0)
-			.addOption("Fullscreen", 1)
-			.addOption("Exclusive Fullscreen", 2);
+		entries.addEntry<OptionsMenuEntry>().initEntry("Tela de abertura:", option::WINDOW_MODE_STARTUP)
+			.addOption("Janela", 0)
+			.addOption("Tela cheia", 1)
+			.addOption("Tela cheia exclusiva", 2);
 
 
-		entries.addEntry<TitleMenuEntry>().initEntry("Performance Output");
+		entries.addEntry<TitleMenuEntry>().initEntry("Saida de desempenho");
 
-		entries.addEntry<OptionsMenuEntry>().initEntry("Show Performance:", option::PERFORMANCE_DISPLAY)
-			.addOption("Off", 0)
-			.addOption("Show Framerate", 1)
-			.addOption("Full Profiling", 2);
+		entries.addEntry<OptionsMenuEntry>().initEntry("Exibir desempenho:", option::PERFORMANCE_DISPLAY)
+			.addOption("Desl.", 0)
+			.addOption("Exibir taxa de quadros", 1)
+			.addOption("Perfil completo", 2);
 	}
 
 	// Audio tab
@@ -345,133 +345,133 @@ OptionsMenu::OptionsMenu(MenuBackground& menuBackground) :
 
 		entries.addEntry<TitleMenuEntry>().initEntry("Volume");
 
-		const char* volumeName[] = { "Overall Volume:", "Music Volume:", "Sound Volume:" };
+		const char* volumeName[] = { "Volume geral:", "Volume da musica:", "Volume do som:" };
 		for (int k = 0; k < 3; ++k)
 		{
 			GameMenuEntry& entry = entries.addEntry<OptionsMenuEntry>().initEntry(volumeName[k], option::AUDIO_VOLUME + k);
-			entry.addOption("Off", 0);
+			entry.addOption("Desl.", 0);
 			for (int i = 5; i <= 100; i += 5)
 				entry.addOption(*String(0, "%d %%", i), i);
 		}
 
 
-		entries.addEntry<TitleMenuEntry>().initEntry("Soundtrack");
+		entries.addEntry<TitleMenuEntry>().initEntry("Trilha sonora");
 
-		entries.addEntry<SoundtrackMenuEntry>().initEntry("Soundtrack Type:", option::SOUNDTRACK)
-			.addOption("Emulated", 0)
-			.addOption("Remastered", 1);
+		entries.addEntry<SoundtrackMenuEntry>().initEntry("Tipo de trilha sonora:", option::SOUNDTRACK)
+			.addOption("Emulado", 0)
+			.addOption("Remasterizado", 1);
 
 		mSoundtrackDownloadMenuEntry = &entries.addEntry<SoundtrackDownloadMenuEntry>();
 		mSoundtrackDownloadMenuEntry->initEntry("", option::SOUNDTRACK_DOWNLOAD);
 
-		entries.addEntry<OptionsMenuEntry>().initEntry("Sound Test:", option::SOUND_TEST);	// Will be filled with content in "initialize()"
+		entries.addEntry<OptionsMenuEntry>().initEntry("Teste de som:", option::SOUND_TEST);	// Will be filled with content in "initialize()"
 
 
-		entries.addEntry<TitleMenuEntry>().initEntry("Theme Selection");
+		entries.addEntry<TitleMenuEntry>().initEntry("Selecionar tema");
 
-		entries.addEntry<OptionsMenuEntry>().initEntry("Title Theme:", option::TITLE_THEME)
+		entries.addEntry<OptionsMenuEntry>().initEntry("Tema de titulo:", option::TITLE_THEME)
 			.addOption("Sonic 3", 0)
 			.addOption("Sonic & Knuckles", 1);
 
-		entries.addEntry<OptionsMenuEntry>().initEntry("1-up Jingle:", option::EXTRA_LIFE_JINGLE)
+		entries.addEntry<OptionsMenuEntry>().initEntry("Melodia de vida extra:", option::EXTRA_LIFE_JINGLE)
 			.addOption("Sonic 3", 0)
 			.addOption("Sonic & Knuckles", 1)
-			.addOption("Pick by Zone", 0x10);
+			.addOption("Selecionar por zona", 0x10);
 
-		entries.addEntry<OptionsMenuEntry>().initEntry("Invincibility Theme:", option::INVINCIBILITY_THEME)
+		entries.addEntry<OptionsMenuEntry>().initEntry("Tema de invencibilidade:", option::INVINCIBILITY_THEME)
 			.addOption("Sonic 3", 0)
 			.addOption("Sonic & Knuckles", 1)
-			.addOption("Pick by Zone", 0x10);
+			.addOption("Selecionar por zona", 0x10);
 
-		entries.addEntry<OptionsMenuEntry>().initEntry("Super/Hyper Theme:", option::SUPER_THEME)
-			.addOption("Normal level music", 0)
-			.addOption("Fast level music", 1)
+		entries.addEntry<OptionsMenuEntry>().initEntry("Tema Super/Hyper:", option::SUPER_THEME)
+			.addOption("Musica normal da fase", 0)
+			.addOption("Musica rapida da fase", 1)
 			.addOption("Sonic 2", 2)
 			.addOption("Sonic 3", 3)
 			.addOption("Sonic & Knuckles", 4)
-			.addOption("S3 Prototype", 5);
+			.addOption("Prototipo do S3", 5);
 
-		entries.addEntry<OptionsMenuEntry>().initEntry("Mini-Boss Theme:", option::MINIBOSS_THEME)
+		entries.addEntry<OptionsMenuEntry>().initEntry("Tema Mini-Chefe:", option::MINIBOSS_THEME)
 			.addOption("Sonic 3", 0)
 			.addOption("Sonic & Knuckles", 1)
-			.addOption("Pick by Zone", 0x10);
+			.addOption("Selecionar por zona", 0x10);
 
-		entries.addEntry<OptionsMenuEntry>().initEntry("Knuckles' Theme:", option::KNUCKLES_THEME)
+		entries.addEntry<OptionsMenuEntry>().initEntry("Tema Knuckles':", option::KNUCKLES_THEME)
 			.addOption("Sonic 3", 0)
 			.addOption("Sonic & Knuckles", 1)
-			.addOption("S3 Prototype", 2)
-			.addOption("Pick by Zone", 0x10);
+			.addOption("Prototipo do S3", 2)
+			.addOption("Selecionar por zona", 0x10);
 
 
-		entries.addEntry<TitleMenuEntry>().initEntry("Level Music");
+		entries.addEntry<TitleMenuEntry>().initEntry("Musica do nivel");
 
-		entries.addEntry<OptionsMenuEntry>().initEntry("Carnival Night Act 1:", option::LEVELMUSIC_CNZ1)
-			.addOption("As Released", 0x00000001)
-			.addOption("S3 Prototype", 0x80000001);
+		entries.addEntry<OptionsMenuEntry>().initEntry("Carnival Night Ato 1:", option::LEVELMUSIC_CNZ1)
+			.addOption("Como lancado", 0x00000001)
+			.addOption("Prototipo do S3", 0x80000001);
 
-		entries.addEntry<OptionsMenuEntry>().initEntry("Carnival Night Act 2:", option::LEVELMUSIC_CNZ2)
-			.addOption("As Released", 0x00000002)
-			.addOption("S3 Prototype", 0x80000002);
+		entries.addEntry<OptionsMenuEntry>().initEntry("Carnival Night Ato 2:", option::LEVELMUSIC_CNZ2)
+			.addOption("Como lancado", 0x00000002)
+			.addOption("Prototipo do S3", 0x80000002);
 
-		entries.addEntry<OptionsMenuEntry>().initEntry("IceCap Act 1:", option::LEVELMUSIC_ICZ1)
-			.addOption("As Released", 0x00000001)
-			.addOption("S3 Prototype", 0x80000001);
+		entries.addEntry<OptionsMenuEntry>().initEntry("IceCap Ato 1:", option::LEVELMUSIC_ICZ1)
+			.addOption("Como lancado", 0x00000001)
+			.addOption("Prototipo do S3", 0x80000001);
 
-		entries.addEntry<OptionsMenuEntry>().initEntry("IceCap Act 2:", option::LEVELMUSIC_ICZ2)
-			.addOption("As Released", 0x00000002)
-			.addOption("S3 Prototype", 0x80000002);
+		entries.addEntry<OptionsMenuEntry>().initEntry("IceCap Ato 2:", option::LEVELMUSIC_ICZ2)
+			.addOption("Como lancado", 0x00000002)
+			.addOption("Prototipo do S3", 0x80000002);
 
-		entries.addEntry<OptionsMenuEntry>().initEntry("Launch Base Act 1:", option::LEVELMUSIC_LBZ1)
-			.addOption("As Released", 0x00000001)
-			.addOption("S3 Prototype", 0x80000001);
+		entries.addEntry<OptionsMenuEntry>().initEntry("Launch Base Ato 1:", option::LEVELMUSIC_LBZ1)
+			.addOption("Como lancado", 0x00000001)
+			.addOption("Prototipo do S3", 0x80000001);
 
-		entries.addEntry<OptionsMenuEntry>().initEntry("Launch Base Act 2:", option::LEVELMUSIC_LBZ2)
-			.addOption("As Released", 0x00000002)
-			.addOption("S3 Prototype", 0x80000002);
+		entries.addEntry<OptionsMenuEntry>().initEntry("Launch Base Ato 2:", option::LEVELMUSIC_LBZ2)
+			.addOption("Como lancado", 0x00000002)
+			.addOption("Prototipo do S3", 0x80000002);
 
 
-		entries.addEntry<TitleMenuEntry>().initEntry("Music Selection");
+		entries.addEntry<TitleMenuEntry>().initEntry("Selecao de musica");
 
-		entries.addEntry<OptionsMenuEntry>().initEntry("FBZ Laser Trap Boss:", option::FBZ2_MIDBOSS_TRACK)
-			.addOption("Mini-Boss Music", 1)
-			.addOption("Main Boss Music", 0);
+		entries.addEntry<OptionsMenuEntry>().initEntry("Chefe Armadilha Laser FBZ:", option::FBZ2_MIDBOSS_TRACK)
+			.addOption("Musica Mini-chefe", 1)
+			.addOption("Musica chefe principal", 0);
 
-		entries.addEntry<OptionsMenuEntry>().initEntry("In Hidden Palace:", option::HPZ_MUSIC)
+		entries.addEntry<OptionsMenuEntry>().initEntry("Hidden Palace:", option::HPZ_MUSIC)
 			.addOption("Sonic 3", 0)
 			.addOption("Sonic & Knuckles", 1)
-			.addOption("S3 + S&K Mini-Boss", 2)
-			.addOption("S3 Prototype", 3);
+			.addOption("S3 + S&K Mini-chefe", 2)
+			.addOption("Prototipo do S3", 3);
 
-		entries.addEntry<OptionsMenuEntry>().initEntry("Sky Sanctuary Bosses:", option::SSZ_BOSSTRACKS)
-			.addOption("Normal Boss Music", 0)
-			.addOption("Sonic 1 & 2 Tracks", 1);
+		entries.addEntry<OptionsMenuEntry>().initEntry("Chefes do Sky Sanctuary:", option::SSZ_BOSSTRACKS)
+			.addOption("Musica normal do chefe", 0)
+			.addOption("Trilhas do Sonic 1 & 2", 1);
 
-		entries.addEntry<OptionsMenuEntry>().initEntry("Outro Music:", option::OUTRO_MUSIC)
+		entries.addEntry<OptionsMenuEntry>().initEntry("Musica de encerramento:", option::OUTRO_MUSIC)
 			.addOption("Sky Sanctuary", 0)
-			.addOption("Sonic 3 Credits", 1)
-			.addOption("S3 Prototype", 2);
+			.addOption("Creditos do Sonic 3", 1)
+			.addOption("Prototipo do S3", 2);
 
-		entries.addEntry<OptionsMenuEntry>().initEntry("Competition Menu:", option::COMPETITION_MENU_MUSIC)
+		entries.addEntry<OptionsMenuEntry>().initEntry("Menu de competicao:", option::COMPETITION_MENU_MUSIC)
 			.addOption("Sonic 3", 0)
-			.addOption("S3 Prototype", 1);
+			.addOption("Prototipo do S3", 1);
 
-		entries.addEntry<OptionsMenuEntry>().initEntry("Continue Screen:", option::CONTINUE_SCREEN_MUSIC)
+		entries.addEntry<OptionsMenuEntry>().initEntry("Tela de continue:", option::CONTINUE_SCREEN_MUSIC)
 			.addOption("Sonic 3", 0)
 			.addOption("Sonic & Knuckles", 1);
 
 
-		entries.addEntry<TitleMenuEntry>().initEntry("Music Behavior");
+		entries.addEntry<TitleMenuEntry>().initEntry("Comportamento da musica");
 
-		entries.addEntry<OptionsMenuEntry>().initEntry("On Level (Re)Start:", option::CONTINUE_MUSIC)
-			.addOption("Restart Music", 0)
-			.addOption("Continue Music", 1);
+		entries.addEntry<OptionsMenuEntry>().initEntry("Reinicio de nivel:", option::CONTINUE_MUSIC)
+			.addOption("Reiniciar musica", 0)
+			.addOption("Continuar musica", 1);
 
 
-		entries.addEntry<TitleMenuEntry>().initEntry("Effects");
+		entries.addEntry<TitleMenuEntry>().initEntry("Efeitos");
 
-		entries.addEntry<OptionsMenuEntry>().initEntry("Underwater Sound:", option::UNDERWATER_AUDIO)
+		entries.addEntry<OptionsMenuEntry>().initEntry("Som subaquatico:", option::UNDERWATER_AUDIO)
 			.addOption("Normal", 0)
-			.addOption("Muffled", 1);
+			.addOption("Abafado", 1);
 	}
 
 	// Visuals tab
@@ -480,70 +480,71 @@ OptionsMenu::OptionsMenu(MenuBackground& menuBackground) :
 		GameMenuEntries& entries = tab.mMenuEntries;
 
 
-		entries.addEntry<TitleMenuEntry>().initEntry("Visual Enhancements");
+		entries.addEntry<TitleMenuEntry>().initEntry("Aprimoramentos visuais");
 
-		entries.addEntry<OptionsMenuEntry>().initEntry("Character Rotation:", option::ROTATION)
+		entries.addEntry<OptionsMenuEntry>().initEntry("Rotacao do personagem:", option::ROTATION)
 			.addOption("Original", 0)
-			.addOption("Smooth", 1)
-			.addOption("Mania-Accurate", 2);
+			.addOption("Suave", 1)
+			.addOption("Preciso-Mania", 2);
 
-		entries.addEntry<OptionsMenuEntry>().initEntry("Time Display:", option::TIME_DISPLAY)
+		entries.addEntry<OptionsMenuEntry>().initEntry("Exibicao de tempo:", option::TIME_DISPLAY)
 			.addOption("Original", 0)
-			.addOption("Extended", 1);
+			.addOption("Estendido", 1);
 
-		entries.addEntry<OptionsMenuEntry>().initEntry("Lives Display:", option::LIVES_DISPLAY)
+		entries.addEntry<OptionsMenuEntry>().initEntry("Exibicao de vidas:", option::LIVES_DISPLAY)
 			.addOption("Auto", 0)
-			.addOption("Classic", 1)
+			.addOption("Classica", 1)
 			.addOption("Mobile", 2);
 
-		entries.addEntry<OptionsMenuEntry>().initEntry("Speed Shoes Effect:", option::SPEEDUP_AFTER_IMAGES)
-			.addOption("None (Original)", 0)
-			.addOption("After-Images", 1);
+		entries.addEntry<OptionsMenuEntry>().initEntry("Tenis de velocidade:", option::SPEEDUP_AFTER_IMAGES)
+			.addOption("Nenhum (Original)", 0)
+			.addOption("Pos-imagens", 1);
 
-		entries.addEntry<OptionsMenuEntry>().initEntry("Fast Run Animation:", option::FAST_RUN_ANIM)
-			.addOption("None (Original)", 0)
-			.addOption("Peel-Out", 1);
+		entries.addEntry<OptionsMenuEntry>().initEntry("Animacao de corrida:", option::FAST_RUN_ANIM)
+			.addOption("Nenhuma (Original)", 0)
+			.addOption("Arrancada", 1);
 
-		entries.addEntry<OptionsMenuEntry>().initEntry("Flicker Effects:", option::ANTI_FLICKER)
-			.addOption("As Original", 0)
-			.addOption("Slightly Smoothed", 1)
-			.addOption("Heavily Smoothed", 2);
+		entries.addEntry<OptionsMenuEntry>().initEntry("Efeitos de tremulacao:", option::ANTI_FLICKER)
+			.addOption("Original", 0)
+			.addOption("Ligeiramente suavizada", 1)
+			.addOption("Muito suavizada", 2);
+
 
 
 		entries.addEntry<TitleMenuEntry>().initEntry("Camera");
 
-		entries.addEntry<OptionsMenuEntry>().initEntry("Outrun Camera:", option::CAMERA_OUTRUN)
-			.addOption("Off", 0)
-			.addOption("On", 1);
+		entries.addEntry<OptionsMenuEntry>().initEntry("Camera de perseguicao:", option::CAMERA_OUTRUN)
+			.addOption("Desl.", 0)
+			.addOption("Lig.", 1);
 
-		entries.addEntry<OptionsMenuEntry>().initEntry("Extended Camera:", option::EXTENDED_CAMERA)
-			.addOption("Off", 0)
-			.addOption("On", 1);
+		entries.addEntry<OptionsMenuEntry>().initEntry("Camera estendida:", option::EXTENDED_CAMERA)
+			.addOption("Desl.", 0)
+			.addOption("Lig.", 1);
 
 
-		entries.addEntry<TitleMenuEntry>().initEntry("Objects");
+		entries.addEntry<TitleMenuEntry>().initEntry("Objetos");
 
-		entries.addEntry<OptionsMenuEntry>().initEntry("Monitor Style:", option::MONITOR_STYLE)
+		entries.addEntry<OptionsMenuEntry>().initEntry("Estilo do monitor:", option::MONITOR_STYLE)
 			.addOption("Sonic 1 / 2", 1)
 			.addOption("Sonic 3 & Knuckles", 0);
 
 
-		entries.addEntry<TitleMenuEntry>().initEntry("Color Changes");
+		entries.addEntry<TitleMenuEntry>().initEntry("Mudancas de cor");
 
-		entries.addEntry<OptionsMenuEntry>().initEntry("IceCap Startup Time:", option::ICZ_NIGHTTIME)
-			.addOption("Daytime", 0)
-			.addOption("Morning Dawn", 1);
+		entries.addEntry<OptionsMenuEntry>().initEntry("Inicio da IceCap:", option::ICZ_NIGHTTIME)
+			.addOption("De dia", 0)
+			.addOption("Amanhecer", 1);
 
 
-		entries.addEntry<TitleMenuEntry>().initEntry("Special Stages");
+		entries.addEntry<TitleMenuEntry>().initEntry("Fases Especiais");
 
-		entries.addEntry<OptionsMenuEntry>().initEntry("Blue Spheres Style:", option::SPECIAL_STAGE_VISUALS)
-			.addOption("Classic", 0)
-			.addOption("Modernized", 3);
+		entries.addEntry<OptionsMenuEntry>().initEntry("Estilo esferas azuis:", option::SPECIAL_STAGE_VISUALS)
+			.addOption("Classico", 0)
+			.addOption("Modernizado", 3);
 
-		entries.addEntry<OptionsMenuEntry>().initEntry("Ring Counter:", option::SPECIAL_STAGE_RING_COUNT)
-			.addOption("Counting Up", 0)
-			.addOption("Counting Down", 1);
+		entries.addEntry<OptionsMenuEntry>().initEntry("Contador de aneis:", option::SPECIAL_STAGE_RING_COUNT)
+			.addOption("Crescente", 0)
+			.addOption("Decrescente", 1);
 	}
 
 	// Gameplay tab
@@ -552,48 +553,48 @@ OptionsMenu::OptionsMenu(MenuBackground& menuBackground) :
 		GameMenuEntries& entries = tab.mMenuEntries;
 
 
-		entries.addEntry<TitleMenuEntry>().initEntry("Levels");
+		entries.addEntry<TitleMenuEntry>().initEntry("Niveis");
 
-		entries.addEntry<OptionsMenuEntry>().initEntry("Level Layouts:", option::LEVEL_LAYOUTS)
+		entries.addEntry<OptionsMenuEntry>().initEntry("Esquemas de niveis:", option::LEVEL_LAYOUTS)
 			.addOption("Sonic 3", 0)
 			.addOption("Sonic 3 & Knuckles", 1)
 			.addOption("Sonic 3 A.I.R.", 2);
 
 
-		entries.addEntry<TitleMenuEntry>().initEntry("Difficulty Changes");
+		entries.addEntry<TitleMenuEntry>().initEntry("Mudancas de dificuldade");
 
-		entries.addEntry<OptionsMenuEntry>().initEntry("Angel Island Bombing:", option::AIZ_BLIMPSEQUENCE)
+		entries.addEntry<OptionsMenuEntry>().initEntry("Bombardeio a Angel Island:", option::AIZ_BLIMPSEQUENCE)
 			.addOption("Original", 0)
-			.addOption("Alternative", 1);
+			.addOption("Alternativo", 1);
 
-		entries.addEntry<OptionsMenuEntry>().initEntry("Big Arms Boss Fight:", option::LBZ_BIGARMS)
-			.addOption("Only Knuckles", 0)
-			.addOption("All characters", 1);
+		entries.addEntry<OptionsMenuEntry>().initEntry("Luta contra Big Arms:", option::LBZ_BIGARMS)
+			.addOption("Somente Knuckles", 0)
+			.addOption("Todos os personagens", 1);
 
-		entries.addEntry<OptionsMenuEntry>().initEntry("Sandopolis Ghosts:", option::SOZ_GHOSTSPAWN)
-			.addOption("Disabled", 1)
-			.addOption("Enabled", 0);
+		entries.addEntry<OptionsMenuEntry>().initEntry("Fantasmas de Sandopolis:", option::SOZ_GHOSTSPAWN)
+			.addOption("Desativado", 1)
+			.addOption("Ativado", 0);
 
-		entries.addEntry<OptionsMenuEntry>().initEntry("Lava Reef Act 2 Boss:", option::LRZ2_BOSS)
-			.addOption("8 hits", 1)
-			.addOption("14 hits (original)", 0);
+		entries.addEntry<OptionsMenuEntry>().initEntry("Chefe Ato 2 de Lava Reef:", option::LRZ2_BOSS)
+			.addOption("8 acertos", 1)
+			.addOption("14 acertos (original)", 0);
 
-		entries.addEntry<OptionsMenuEntry>().initEntry("Keep Shield after Zone:", option::MAINTAIN_SHIELDS)
-			.addOption("Disabled", 0)
-			.addOption("Enabled", 1);
+		entries.addEntry<OptionsMenuEntry>().initEntry("Manter escudo apos zona:", option::MAINTAIN_SHIELDS)
+			.addOption("Desativado", 0)
+			.addOption("Ativado", 1);
 
 
-		entries.addEntry<TitleMenuEntry>().initEntry("Time Attack");
+		entries.addEntry<TitleMenuEntry>().initEntry("Duelo crono");
 
-		entries.addEntry<OptionsMenuEntry>().initEntry("Max. Recorded Ghosts:", option::TIMEATTACK_GHOSTS)
-			.addOption("Off", 0)
+		entries.addEntry<OptionsMenuEntry>().initEntry("Max. fantasmas gravados:", option::TIMEATTACK_GHOSTS)
+			.addOption("Desl.", 0)
 			.addOption("1", 1)
 			.addOption("3", 3)
 			.addOption("5", 5);
 
-		entries.addEntry<OptionsMenuEntry>().initEntry("Quick Restart:", option::TIMEATTACK_INSTANTRESTART)
-			.addOption("Hold Y Button", 0)
-			.addOption("Press Y Button", 1);
+		entries.addEntry<OptionsMenuEntry>().initEntry("Reinicio rapido:", option::TIMEATTACK_INSTANTRESTART)
+			.addOption("Pressione e segure o Y", 0)
+			.addOption("Pressione o botao Y", 1);
 	}
 
 	// Controls tab
@@ -602,15 +603,15 @@ OptionsMenu::OptionsMenu(MenuBackground& menuBackground) :
 		GameMenuEntries& entries = tab.mMenuEntries;
 
 
-		entries.addEntry<TitleMenuEntry>().initEntry("Unlocked by Secrets");
+		entries.addEntry<TitleMenuEntry>().initEntry("Desbloqueado por segredos");
 
 		entries.addEntry<OptionsMenuEntry>().initEntry("Sonic Drop Dash:", option::DROP_DASH)
-			.addOption("Off", 0)
-			.addOption("On", 1);
+			.addOption("Desl.", 0)
+			.addOption("Lig.", 1);
 
-		entries.addEntry<OptionsMenuEntry>().initEntry("Sonic Super Peel-Out:", option::SUPER_PEELOUT)
-			.addOption("Off", 0)
-			.addOption("On", 1);
+		entries.addEntry<OptionsMenuEntry>().initEntry("Sonic super arrancada:", option::SUPER_PEELOUT)
+			.addOption("Desl.", 0)
+			.addOption("Lig.", 1);
 
 		for (size_t i = 1; i < entries.size(); ++i)
 		{
@@ -618,88 +619,88 @@ OptionsMenu::OptionsMenu(MenuBackground& menuBackground) :
 		}
 
 
-		entries.addEntry<TitleMenuEntry>().initEntry("Controllers");
+		entries.addEntry<TitleMenuEntry>().initEntry("Controles");
 
-		entries.addEntry<OptionsMenuEntry>().initEntry("Setup Keyboard & Game Controllers...", option::CONTROLLER_SETUP);		// This text here won't be used, see rendering
+		entries.addEntry<OptionsMenuEntry>().initEntry("Configurar teclado & controles...", option::CONTROLLER_SETUP);		// This text here won't be used, see rendering
 
 		for (int k = 0; k < 2; ++k)
 		{
-			GameMenuEntry& entry = entries.addEntry<OptionsMenuEntry>().initEntry(*String(0, "Controller Player %d", k+1), option::CONTROLLER_PLAYER_1 + k);
+			GameMenuEntry& entry = entries.addEntry<OptionsMenuEntry>().initEntry(*String(0, "Controle do jogador", k+1), option::CONTROLLER_PLAYER_1 + k);
 			if (Application::instance().hasVirtualGamepad())
-				entry.addOption("None (Touch only)", -1);
+				entry.addOption("Nenhum (Toque somente)", -1);
 			else
-				entry.addOption("None (Keyboard only)", -1);
+				entry.addOption("Nenhum (Apenas teclado)", -1);
 			// Actual options will get filled in inside "refreshGamepadLists"
 			mGamepadAssignmentEntries[k] = &entry;
 		}
 
-		entries.addEntry<OptionsMenuEntry>().initEntry("Other controllers", option::CONTROLLER_AUTOASSIGN)
-			.addOption("Not used", -1)
-			.addOption("Assign to Player 1", 0)
-			.addOption("Assign to Player 2", 1);
+		entries.addEntry<OptionsMenuEntry>().initEntry("Outros controles", option::CONTROLLER_AUTOASSIGN)
+			.addOption("Nao utilizado", -1)
+			.addOption("Atribuir ao jogador 1", 0)
+			.addOption("Atribuir ao jogador 2", 1);
 
 		for (int k = 0; k < 2; ++k)
 		{
-			GameMenuEntry& entry = entries.addEntry<OptionsMenuEntry>().initEntry(*String(0, "Rumble Player %d", k+1), option::CONTROLLER_RUMBLE_P1 + k);
-			entry.addOption("Off", 0);
+			GameMenuEntry& entry = entries.addEntry<OptionsMenuEntry>().initEntry(*String(0, "Vibracao do jogador %d", k+1), option::CONTROLLER_RUMBLE_P1 + k);
+			entry.addOption("Desl.", 0);
 			for (int i = 20; i <= 100; i += 20)
 				entry.addOption(*String(0, "%d %%", i), i);
 		}
 
 		if (Application::instance().hasVirtualGamepad())
 		{
-			entries.addEntry<TitleMenuEntry>().initEntry("Virtual Gamepad");
+			entries.addEntry<TitleMenuEntry>().initEntry("Controle virtual");
 
-			entries.addEntry<OptionsMenuEntry>().initEntry("Visibility:",   option::VGAMEPAD_OPACITY).addPercentageOptions(0, 100, 10);
-			entries.addEntry<OptionsMenuEntry>().initEntry("D-Pad Size:",	option::VGAMEPAD_DPAD_SIZE).addNumberOptions(50, 150, 10);
-			entries.addEntry<OptionsMenuEntry>().initEntry("Buttons Size:", option::VGAMEPAD_BUTTONS_SIZE).addNumberOptions(50, 150, 10);
-			entries.addEntry<OptionsMenuEntry>().initEntry("Set Touch Gamepad Layout...", option::VGAMEPAD_SETUP);
+			entries.addEntry<OptionsMenuEntry>().initEntry("Visibilidade:",   option::VGAMEPAD_OPACITY).addPercentageOptions(0, 100, 10);
+			entries.addEntry<OptionsMenuEntry>().initEntry("Tamanho do D-Pad:",	option::VGAMEPAD_DPAD_SIZE).addNumberOptions(50, 150, 10);
+			entries.addEntry<OptionsMenuEntry>().initEntry("Tamanho dos botoes:", option::VGAMEPAD_BUTTONS_SIZE).addNumberOptions(50, 150, 10);
+			entries.addEntry<OptionsMenuEntry>().initEntry("Definir esquema do controle virtual...", option::VGAMEPAD_SETUP);
 		}
 
 
-		entries.addEntry<TitleMenuEntry>().initEntry("Abilities");
+		entries.addEntry<TitleMenuEntry>().initEntry("Habilidades");
 
-		entries.addEntry<OptionsMenuEntry>().initEntry("Sonic Insta-Shield:", option::INSTA_SHIELD)
-			.addOption("Off", 0)
-			.addOption("On", 1);
+		entries.addEntry<OptionsMenuEntry>().initEntry("Insta-Shield do Sonic:", option::INSTA_SHIELD)
+			.addOption("Desl.", 0)
+			.addOption("Lig.", 1);
 
-		entries.addEntry<OptionsMenuEntry>().initEntry("Tails Assist:", option::TAILS_ASSIST)
-			.addOption("Off", 0)
-			.addOption("Sonic 3 A.I.R. Style", 1)
-			.addOption("Hybrid Style", 2)
-			.addOption("Sonic Mania Style", 3);
+		entries.addEntry<OptionsMenuEntry>().initEntry("Ajuda do Tails:", option::TAILS_ASSIST)
+			.addOption("Desl.", 0)
+			.addOption("Estilo Sonic 3 A.I.R.", 1)
+			.addOption("Estilo hibrido", 2)
+			.addOption("Estilo Sonic Mania", 3);
 
-		entries.addEntry<OptionsMenuEntry>().initEntry("Tails Flight Cancel:", option::TAILS_FLIGHT_CANCEL)
-			.addOption("Off", 0)
-			.addOption("Down + Jump", 1);
+		entries.addEntry<OptionsMenuEntry>().initEntry("Cancelar voo do Tails:", option::TAILS_FLIGHT_CANCEL)
+			.addOption("Desl.", 0)
+			.addOption("Baixo + Pulo", 1);
 
-		entries.addEntry<OptionsMenuEntry>().initEntry("Roll Jump Control Lock:", option::NO_CONTROL_LOCK)
-			.addOption("Locked (Classic)", 0)
-			.addOption("Free Movement", 1);
+		entries.addEntry<OptionsMenuEntry>().initEntry("Bloqueio no salto rolante:", option::NO_CONTROL_LOCK)
+			.addOption("Bloqueado (Classico)", 0)
+			.addOption("Movimento livre", 1);
 
-		entries.addEntry<OptionsMenuEntry>().initEntry("Bubble Shield Bounce:", option::BUBBLE_SHIELD_BOUNCE)
-			.addOption("Sonic 3 Style", 0)
-			.addOption("Sonic Mania Style", 1);
+		entries.addEntry<OptionsMenuEntry>().initEntry("Salto com escudo de bolha:", option::BUBBLE_SHIELD_BOUNCE)
+			.addOption("Estilo Sonic 3", 0)
+			.addOption("Estilo Sonic Mania", 1);
 
 
-		entries.addEntry<TitleMenuEntry>().initEntry("Super & Hyper Forms");
+		entries.addEntry<TitleMenuEntry>().initEntry("Super e Hiper Formas");
 
-		entries.addEntry<OptionsMenuEntry>().initEntry("Tails Super Forms:", option::HYPER_TAILS)
-			.addOption("Only Super Tails", 0)
-			.addOption("Super & Hyper Tails", 1);
+		entries.addEntry<OptionsMenuEntry>().initEntry("Formas Super do Tails:", option::HYPER_TAILS)
+			.addOption("Somente Super Tails", 0)
+			.addOption("Super & Hiper Tails", 1);
 
-		entries.addEntry<OptionsMenuEntry>().initEntry("Super Cancel:", option::SUPER_CANCEL)
-			.addOption("Off", 0)
-			.addOption("On", 1);
+		entries.addEntry<OptionsMenuEntry>().initEntry("Cancelamento Super:", option::SUPER_CANCEL)
+			.addOption("Desl.", 0)
+			.addOption("Lig.", 1);
 
-		entries.addEntry<OptionsMenuEntry>().initEntry("Super Sonic Jump Ability:", option::SUPER_SONIC_ABILITY)
-			.addOption("None (Original)", 0)
-			.addOption("Shield", 1)
+		entries.addEntry<OptionsMenuEntry>().initEntry("Hab. Salto Super Sonic:", option::SUPER_SONIC_ABILITY)
+			.addOption("Nenhum (Original)", 0)
+			.addOption("Escudo", 1)
 			.addOption("Super Dash", 2);
 
-		entries.addEntry<OptionsMenuEntry>().initEntry("Sonic Hyper Dash:", option::HYPER_DASH_CONTROLS)
-			.addOption("As Original", 0)
-			.addOption("Only when D-pad held", 1);
+		entries.addEntry<OptionsMenuEntry>().initEntry("Hiper Corrida do Sonic:", option::HYPER_DASH_CONTROLS)
+			.addOption("Como original", 0)
+			.addOption("Apenas ao pressionado o D-pad", 1);
 	}
 
 	// Tweaks tab
@@ -708,23 +709,23 @@ OptionsMenu::OptionsMenu(MenuBackground& menuBackground) :
 		GameMenuEntries& entries = tab.mMenuEntries;
 
 
-		entries.addEntry<TitleMenuEntry>().initEntry("Unlocked by Secrets");
+		entries.addEntry<TitleMenuEntry>().initEntry("Desbloqueado por segredos");
 
-		entries.addEntry<OptionsMenuEntry>().initEntry("Debug Mode:", option::DEBUG_MODE)
-			.addOption("Off", 0)
-			.addOption("On", 1);
+		entries.addEntry<OptionsMenuEntry>().initEntry("Modo de depuracao:", option::DEBUG_MODE)
+			.addOption("Desl.", 0)
+			.addOption("Lig.", 1);
 
-		entries.addEntry<OptionsMenuEntry>().initEntry("Title Screen:", option::TITLE_SCREEN)
+		entries.addEntry<OptionsMenuEntry>().initEntry("Tela de titulo:", option::TITLE_SCREEN)
 			.addOption("Sonic 3", 0)
 			.addOption("Sonic & Knuckles", 1);
 
-		entries.addEntry<OptionsMenuEntry>().initEntry("Game Speed:", option::GAME_SPEED)
-			.addOption("50 Hz (slower)", 50)
+		entries.addEntry<OptionsMenuEntry>().initEntry("Velocidade do jogo:", option::GAME_SPEED)
+			.addOption("50 Hz (mais lento)", 50)
 			.addOption("60 Hz (normal)", 60)
-			.addOption("75 Hz (faster)", 75)
-			.addOption("90 Hz (much faster)", 90)
-			.addOption("120 Hz (ridiculous)", 120)
-			.addOption("144 Hz (ludicrous)", 144);
+			.addOption("75 Hz (mais rapido)", 75)
+			.addOption("90 Hz (muito mais rapido)", 90)
+			.addOption("120 Hz (ridiculo)", 120)
+			.addOption("144 Hz (louco)", 144);
 
 		for (size_t i = 1; i < entries.size(); ++i)
 		{
@@ -732,65 +733,65 @@ OptionsMenu::OptionsMenu(MenuBackground& menuBackground) :
 		}
 
 
-		entries.addEntry<TitleMenuEntry>().initEntry("Accessibility");
+		entries.addEntry<TitleMenuEntry>().initEntry("Acessibilidade");
 
-		entries.addEntry<OptionsMenuEntry>().initEntry("Infinite Lives:", option::INFINITE_LIVES)
-			.addOption("Disabled", 0)
-			.addOption("Enabled", 1);
+		entries.addEntry<OptionsMenuEntry>().initEntry("Vidas infinitas:", option::INFINITE_LIVES)
+			.addOption("Desativado", 0)
+			.addOption("Ativado", 1);
 
-		entries.addEntry<OptionsMenuEntry>().initEntry("Infinite Time:", option::INFINITE_TIME)
-			.addOption("Disabled", 0)
-			.addOption("Enabled", 1);
-
-
-		entries.addEntry<TitleMenuEntry>().initEntry("Game Variety");
-
-		entries.addEntry<OptionsMenuEntry>().initEntry("Shields:", option::SHIELD_TYPES)
-			.addOption("Classic Shield", 0)
-			.addOption("Elemental Shields", 1)
-			.addOption("Classic + Elemental", 2)
-			.addOption("Upgradable Shields", 3);
-
-		entries.addEntry<OptionsMenuEntry>().initEntry("Randomized Monitors:", option::RANDOM_MONITORS)
-			.addOption("Normal Monitors", 0)
-			.addOption("Random Shields", 1)
-			.addOption("Random Monitors", 2);
-
-		entries.addEntry<OptionsMenuEntry>().initEntry("Monitor Behavior:", option::MONITOR_BEHAVIOR)
-			.addOption("Default", 0)
-			.addOption("Fall down when hit", 1);
+		entries.addEntry<OptionsMenuEntry>().initEntry("Tempo infinito:", option::INFINITE_TIME)
+			.addOption("Desativado", 0)
+			.addOption("Ativado", 1);
 
 
-		entries.addEntry<TitleMenuEntry>().initEntry("Special Stages");
+		entries.addEntry<TitleMenuEntry>().initEntry("Variedade do jogo");
 
-		entries.addEntry<OptionsMenuEntry>().initEntry("Special Stage Layouts:", option::RANDOM_SPECIALSTAGES)
+		entries.addEntry<OptionsMenuEntry>().initEntry("Escudos:", option::SHIELD_TYPES)
+			.addOption("Escudo classico", 0)
+			.addOption("Escudos elementais", 1)
+			.addOption("Classico + elemental", 2)
+			.addOption("Escudos atualizaveis", 3);
+
+		entries.addEntry<OptionsMenuEntry>().initEntry("Monitores aleatorizados:", option::RANDOM_MONITORS)
+			.addOption("Monitores normal", 0)
+			.addOption("Escudos aleatorios", 1)
+			.addOption("Monitores aleatorios", 2);
+
+		entries.addEntry<OptionsMenuEntry>().initEntry("Comportamento do monitor:", option::MONITOR_BEHAVIOR)
+			.addOption("Padrao", 0)
+			.addOption("Cair ao ser atingido", 1);
+
+
+		entries.addEntry<TitleMenuEntry>().initEntry("Fases especiais");
+
+		entries.addEntry<OptionsMenuEntry>().initEntry("Esquema de fases especiais:", option::RANDOM_SPECIALSTAGES)
 			.addOption("Original", 0)
-			.addOption("Randomly Generated", 1);
+			.addOption("Gerado aleatoriamente", 1);
 
-		entries.addEntry<OptionsMenuEntry>().initEntry("On Fail:", option::SPECIAL_STAGE_REPEAT)
-			.addOption("Advance to next", 0)
-			.addOption("Do not advance", 1);
-
-
-		entries.addEntry<TitleMenuEntry>().initEntry("Region");
-
-		entries.addEntry<OptionsMenuEntry>().initEntry("Region Code:", option::REGION)
-			.addOption("Western (\"Tails\")", 0x80)
-			.addOption("Japan (\"Miles\")", 0x00);
+		entries.addEntry<OptionsMenuEntry>().initEntry("Ao falhar:", option::SPECIAL_STAGE_REPEAT)
+			.addOption("Avancar para a proxima", 0)
+			.addOption("Nao avancar", 1);
 
 
-		entries.addEntry<TitleMenuEntry>().initEntry("Speedrunning");
+		entries.addEntry<TitleMenuEntry>().initEntry("Regiao");
 
-		entries.addEntry<OptionsMenuEntry>().initEntry("Glitch Fixes:", option::FIX_GLITCHES)
-			.addOption("No glitch fixes", 0)
-			.addOption("Only basic fixes", 1)
-			.addOption("All (recommended)", 2);
+		entries.addEntry<OptionsMenuEntry>().initEntry("Codigo da regiao:", option::REGION)
+			.addOption("Ocidental (\"Tails\")", 0x80)
+			.addOption("Japao (\"Miles\")", 0x00);
+
+
+		entries.addEntry<TitleMenuEntry>().initEntry("Jogo de velocidade");
+
+		entries.addEntry<OptionsMenuEntry>().initEntry("Correcoes de glitches:", option::FIX_GLITCHES)
+			.addOption("Sem correcoes", 0)
+			.addOption("Somente basicas", 1)
+			.addOption("Todas (recomendado)", 2);
 	}
 
 	for (int i = 1; i < Tab::Id::_NUM; ++i)		// Exclude "Mods" tab
 	{
 		GameMenuEntries& entries = mTabs[i].mMenuEntries;
-		entries.addEntry<OptionsMenuEntry>().initEntry("Back", option::_BACK);
+		entries.addEntry<OptionsMenuEntry>().initEntry("Voltar", option::_BACK);
 
 		for (size_t k = 0; k < entries.size(); ++k)
 		{
@@ -890,7 +891,7 @@ void OptionsMenu::initialize()
 				{
 					if (mod->mSettingCategories.size() >= 2)
 					{
-						static const std::string OTHER_SETTINGS = "Other Settings";
+						static const std::string OTHER_SETTINGS = "Outras configuracoes";
 						titleText = &OTHER_SETTINGS;
 					}
 				}
@@ -934,7 +935,7 @@ void OptionsMenu::initialize()
 			optionEntry.mGameMenuEntry = &entry;
 		}
 
-		entries.addEntry<OptionsMenuEntry>().initEntry("Back", option::_BACK);
+		entries.addEntry<OptionsMenuEntry>().initEntry("Voltar", option::_BACK);
 
 		mHasAnyModOptions = (nextOptionId > option::_NUM + 1);
 		mTabMenuEntries[0].mSelectedIndex = mActiveTab;
@@ -1442,7 +1443,7 @@ void OptionsMenu::render()
 				const float visibility = saturate(mWarningMessageTimeout / 0.3f);
 				const Recti rect(0, 210 + roundToInt((1.0f - visibility) * 16.0f), 400, 16);
 				drawer.drawRect(rect, Color(1.0f, 0.75f, 0.5f, alpha * 0.95f));
-				drawer.printText(global::mOxyfontSmall, rect, "Note: Some options are hidden while in-game.", 5, Color(1.0f, 0.9f, 0.8f, alpha));
+				drawer.printText(global::mOxyfontSmall, rect, "Nota: Algumas opcoes estao ocultas durante o jogo.", 5, Color(1.0f, 0.9f, 0.8f, alpha));
 				drawer.drawRect(Recti(rect.x, rect.y-1, rect.width, 1), Color(0.4f, 0.2f, 0.0f, alpha * 0.95f));
 				drawer.drawRect(Recti(rect.x, rect.y-2, rect.width, 1), Color(0.9f, 0.9f, 0.9f, alpha * 0.9f));
 				drawer.drawRect(Recti(rect.x, rect.y-3, rect.width, 1), Color(0.9f, 0.9f, 0.9f, alpha * 0.6f));
@@ -1453,7 +1454,7 @@ void OptionsMenu::render()
 				const float visibility = saturate(mAudioWarningMessageTimeout / 0.3f);
 				const Recti rect(0, 210 + roundToInt((1.0f - visibility) * 16.0f), 400, 16);
 				drawer.drawRect(rect, Color(1.0f, 0.75f, 0.5f, alpha * 0.95f));
-				drawer.printText(global::mOxyfontSmall, rect, "Note: Music changes don't affect already playing tracks.", 5, Color(1.0f, 0.9f, 0.8f, alpha));
+				drawer.printText(global::mOxyfontSmall, rect, "Nota: As mudancas musicais nao afetam as faixas ja tocadas.", 5, Color(1.0f, 0.9f, 0.8f, alpha));
 				drawer.drawRect(Recti(rect.x, rect.y-1, rect.width, 1), Color(0.4f, 0.2f, 0.0f, alpha * 0.95f));
 				drawer.drawRect(Recti(rect.x, rect.y-2, rect.width, 1), Color(0.9f, 0.9f, 0.9f, alpha * 0.9f));
 				drawer.drawRect(Recti(rect.x, rect.y-3, rect.width, 1), Color(0.9f, 0.9f, 0.9f, alpha * 0.6f));
