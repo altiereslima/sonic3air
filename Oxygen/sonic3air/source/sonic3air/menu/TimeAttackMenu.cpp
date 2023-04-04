@@ -134,7 +134,7 @@ void TimeAttackMenu::initialize()
 {
 	// Update Max Control unlocking
 	GameMenuEntry::Option* option = mCharacterEntry->getOptionByValue((uint32)CharacterOption::SONIC_MAXCONTROL);
-	RMX_CHECK(nullptr != option, "Opcao para Controle Maximo não encontrada", );
+	RMX_CHECK(nullptr != option, "Opcao para Controle Maximo nao encontrada", );
 	if (nullptr != option)
 	{
 		option->mVisible = PlayerProgress::instance().isSecretUnlocked(SharedDatabase::Secret::SECRET_SUPER_PEELOUT);
