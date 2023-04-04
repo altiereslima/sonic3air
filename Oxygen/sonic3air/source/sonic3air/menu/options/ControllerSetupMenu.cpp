@@ -73,17 +73,17 @@ void ControllerSetupMenu::initialize()
 		refreshGamepadList(true);
 	}
 
-	mMenuEntries.addEntry("Assign all buttons", ::ASSIGN_ALL);
+	mMenuEntries.addEntry("Atribuir todos os botoes", ::ASSIGN_ALL);
 
 	const constexpr size_t NUM_BUTTONS = (size_t)InputConfig::DeviceDefinition::Button::_NUM;
-	const char* buttonNames[NUM_BUTTONS] = { "Up", "Down", "Left", "Right", "A", "B", "X", "Y", "Start", "Back" };
+	const char* buttonNames[NUM_BUTTONS] = { "Cima", "Baixo", "Esquerda", "Direita", "A", "B", "X", "Y", "Start", "Back" };
 	for (size_t i = 0; i < NUM_BUTTONS; ++i)
 	{
 		mMenuEntries.addEntry(buttonNames[i], ::BUTTON_UP + (uint32)i);
 	}
 
 	// Back button
-	mMenuEntries.addEntry("Back to Options", ::_BACK);
+	mMenuEntries.addEntry("Voltar para opcoes", ::_BACK);
 }
 
 void ControllerSetupMenu::deinitialize()

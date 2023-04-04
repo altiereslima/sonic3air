@@ -261,10 +261,10 @@ void ModsMenu::initialize()
 	{
 		GameMenuEntries& entries = mTabs[0].mMenuEntries;
 	#if !defined(PLATFORM_ANDROID) && !defined(PLATFORM_WEB) && !defined(PLATFORM_IOS)
-		entries.addEntry("Open mods " DIRECTORY_STRING, 0xfff0);
+		entries.addEntry("Abrir pasta de mods", 0xfff0);
 	#endif
-		entries.addEntry("Open Manual in web browser", 0xfff1);
-		entries.addEntry("Back", 0xffff);
+		entries.addEntry("Abrir manual no navegador", 0xfff1);
+		entries.addEntry("Voltar", 0xffff);
 
 		mActiveTab = 0;
 	}

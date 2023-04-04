@@ -417,7 +417,7 @@ void ExtrasMenu::render()
 				if (isSelected)
 				{
 					const Color color3(1.0f, 1.0f - std::fabs(std::fmod(FTX::getTime(), 1.0f) - 0.5f) * 2.0f, 0.0f, entry.mAnimation.mHighlight);
-					drawer.printText(global::mOxyfontSmall, Recti(px + roundToInt(interpolate(50.0f, 0.0f, entry.mAnimation.mHighlight)), py - 11, 0, 10), "Press Enter to start", 2, color3);
+					drawer.printText(global::mOxyfontSmall, Recti(px + roundToInt(interpolate(50.0f, 0.0f, entry.mAnimation.mHighlight)), py - 11, 0, 10), "Pressione Enter para iniciar", 2, color3);
 				}
 				py -= 8;
 			}

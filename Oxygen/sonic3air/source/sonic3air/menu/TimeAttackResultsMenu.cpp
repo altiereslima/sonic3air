@@ -43,8 +43,8 @@ void TimeAttackResultsMenu::onFadeIn()
 	{
 		mMenuEntries.clear();
 		mMenuEntries.reserve(2);
-		mMenuEntries.addEntry("Retry", 0);
-		mMenuEntries.addEntry("Exit", 1);
+		mMenuEntries.addEntry("Repetir", 0);
+		mMenuEntries.addEntry("Sair", 1);
 	}
 	mMenuEntries.mSelectedEntryIndex = 0;
 }
@@ -120,19 +120,19 @@ void TimeAttackResultsMenu::render()
 		Recti rect(roundToInt(mRect.width) - global::mTimeAttackResultsBG.getWidth(), 0, global::mTimeAttackResultsBG.getWidth(), global::mTimeAttackResultsBG.getHeight());
 		drawer.drawRect(rect, global::mTimeAttackResultsBG);
 
-		const String text = String("Your time:   ") + formatTime(mYourTime, true);
+		const String text = String("Seu tempo:   ") + formatTime(mYourTime, true);
 		drawer.printText(global::mSonicFontC, Recti(76 + std::min(roundToInt(mTime * 500) - 160, 0), 97, 0, 0), text, 1);
 
 		if (!mBetterTimes.empty())
 		{
-			const String text = (mBetterTimes.size() == 1) ? "Time to beat:" : "Times to beat:";
+			const String text = (mBetterTimes.size() == 1) ? "Tempo para superar:" : "Tempos para superar:";
 			const int px = 232 + ((int)mBetterTimes.size() + 1) * 2 + roundToInt(std::max(0.45f - mTime, 0.0f) * 750);
 			const int py = 79 - ((int)mBetterTimes.size() + 1) * 16;
 			drawer.printText(global::mOxyfontRegular, Recti(px, py, 0, 0), text, 1);
 		}
 		else if (!mWorseTimes.empty())
 		{
-			const String text = "NEW RECORD!";
+			const String text = "NOVO RECORDE!";
 			const int px = 238 + roundToInt(std::max(0.45f - mTime, 0.0f) * 750);
 			const int py = 64;
 			drawer.printText(global::mOxyfontRegular, Recti(px, py, 0, 0), text, 1, roundToInt(mTime * 8.0f) % 2 ? Color::YELLOW : Color::WHITE);

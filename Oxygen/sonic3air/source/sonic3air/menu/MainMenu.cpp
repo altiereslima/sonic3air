@@ -48,7 +48,7 @@ MainMenu::MainMenu(MenuBackground& menuBackground) :
 		mMenuEntries.reserve(6);
 		mMenuEntries.addEntry("JOGO NORMAL", mainmenu::NORMAL_GAME);
 		mMenuEntries.addEntry("ESCOLHER ATO",  mainmenu::ACT_SELECT);
-		mMenuEntries.addEntry("Duelo crono", mainmenu::TIME_ATTACK);
+		mMenuEntries.addEntry("DUELO CRONO", mainmenu::TIME_ATTACK);
 		mMenuEntries.addEntry("OPCOES",	 mainmenu::OPTIONS);
 		mMenuEntries.addEntry("EXTRAS",		 mainmenu::EXTRAS);
 		mMenuEntries.addEntry("MODS",		 mainmenu::MODS);
@@ -298,8 +298,6 @@ void MainMenu::render()
 				drawer.printText(global::mSmallfont, Recti(px, 1, 0, 0), txt, 3, Color(0.6f, 0.2f, 0.2f, mVisibility * 0.3f));
 			}
 		}
-
-	// Mod errors
 	}
 
 	drawer.performRendering();
