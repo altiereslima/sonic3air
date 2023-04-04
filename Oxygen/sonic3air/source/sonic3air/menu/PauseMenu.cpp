@@ -186,7 +186,7 @@ void PauseMenu::update(float timeElapsed)
 
 							mDialogEntries.clear();
 							mDialogEntries.addEntry("Continuar", 0);
-							mDialogEntries.addEntry("Sair para o menu", 0x20);
+							mDialogEntries.addEntry("Ir para o menu", 0x20);
 							mDialogEntries.mSelectedEntryIndex = 0;
 						}
 						break;
