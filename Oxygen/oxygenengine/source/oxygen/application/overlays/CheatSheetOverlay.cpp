@@ -54,32 +54,32 @@ void CheatSheetOverlay::render()
 	static const std::vector<const char*> texts =
 	{
 		// Always available
-		"Alt+Enter", "Toggle fullscreen",
-		"Alt+F/G",   "Change upscaling method",
-		"Alt+H",     "Change frame sync method",
-		"Alt+B",     "Change background blur",
-		"Alt+P",     "Change performance display",
-		"F2",        "Save game recording (for debugging)",
-		"F3",        "Rescan connected game controllers",
-		"F4",        "Exchange player 1/2 controls",
+		"Alt+Enter", "Alternar tela cheia",
+		"Alt+F/G",   "Mudar metodo de redimensionamento",
+		"Alt+H",     "Mudar metodo de sincronizacao de quadros",
+		"Alt+B",     "Mudar desfoque de fundo",
+		"Alt+P",     "Mudar exibicao de desempenho",
+		"F2",        "Salvar gravacao do jogo (para depuracao)",
+		"F3",        "Pesquisar controles conectados",
+		"F4",        "Trocar controles do jogador 1/2",
 
 		// Dev mode only
-		"F5",        "Save state",
-		"F7",        "Reload last state",
-		"F8",        "Load state",
-		"F10",       "Reload resources",
-		"F11",       "Reload scripts",
-		"0..9",      "Debug keys (can be queried in scripts)",
-		",",         "Show plane B content",
-		".",         "Show plane A content",
-		"-",         "Show VRAM content",
-		"Tab",       "Dump shown plane, VRAM or palette",
-		"Alt+1..8",  "Toggle layer rendering",
-		"Alt+M",     "Toggle palette view",
-		"Alt+R",     "Change render method",
-		"Alt+T",     "Toggle abstracted level rendering",
-		"Alt+V",     "Toggle debug visualization",
-		"Alt+C",     "Change between debug visualizations",
+		"F5",        "Salvar estado",
+		"F7",        "Recarregar ultimo estado",
+		"F8",        "Carregar estado",
+		"F10",       "Recarregar recursos",
+		"F11",       "Recarregar scripts",
+		"0..9",      "Teclas de depuracao (podem ser consultadas em scripts)",
+		",",         "Mostrar conteudo do plano B",
+		".",         "Mostrar conteudo do plano A",
+		"-",         "Mostrar conteudo da VRAM",
+		"Tab",       "Despejar plano, VRAM ou paleta mostrados",
+		"Alt+1..8",  "Alternar renderizacao de camada",
+		"Alt+M",     "Alternar exibicao de paleta",
+		"Alt+R",     "Mudar metodo de renderizacao",
+		"Alt+T",     "Alternar renderizacao de nivel abstraido",
+		"Alt+V",     "Alternar visualizacao de depuracao",
+		"Alt+C",     "Mudar entre visualizacoes de depuracao",
 	};
 	const size_t NUM_TEXTS_NONDEV = 8;
 	const size_t NUM_TEXTS = EngineMain::getDelegate().useDeveloperFeatures() ? (texts.size() / 2) : NUM_TEXTS_NONDEV;
@@ -89,7 +89,7 @@ void CheatSheetOverlay::render()
 	drawer.drawRect(mRect, Color(0.1f, 0.1f, 0.1f, alpha * 0.6f));
 
 	Recti rct(roundToInt(mRect.x) + 20, roundToInt(mRect.y) + 16, 40, 20);
-	drawer.printText(font, rct, "Hotkeys overview - show/hide with F1", 1, Color(0.5f, 1.0f, 1.0f, alpha));
+	drawer.printText(font, rct, "Visao geral das teclas de atalho - mostrar/ocultar com F1", 1, Color(0.5f, 1.0f, 1.0f, alpha));
 	rct.y += 26;
 
 	for (size_t i = 0; i < NUM_TEXTS; ++i)
