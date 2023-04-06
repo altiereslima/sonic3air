@@ -51,11 +51,11 @@ Application::Application() :
 
 	// Register profiling region IDs
 	Profiling::startup();
-	Profiling::registerRegion(ProfilingRegion::SIMULATION,			 "Simulation",	Color(1.0f, 1.0f, 0.0f));
-	Profiling::registerRegion(ProfilingRegion::SIMULATION_USER_CALL, "User Calls",	Color(0.7f, 0.7f, 0.0f));
+	Profiling::registerRegion(ProfilingRegion::SIMULATION,			 "Simulacao",	Color(1.0f, 1.0f, 0.0f));
+	Profiling::registerRegion(ProfilingRegion::SIMULATION_USER_CALL, "Chamadas de usuario",	Color(0.7f, 0.7f, 0.0f));
 	Profiling::registerRegion(ProfilingRegion::AUDIO,				 "Audio",		Color::RED);
-	Profiling::registerRegion(ProfilingRegion::RENDERING,			 "Rendering",	Color::BLUE);
-	Profiling::registerRegion(ProfilingRegion::FRAMESYNC,			 "Frame Sync",	Color(0.3f, 0.3f, 0.3f));
+	Profiling::registerRegion(ProfilingRegion::RENDERING,			 "Renderizacao",	Color::BLUE);
+	Profiling::registerRegion(ProfilingRegion::FRAMESYNC,			 "Sincronizacao de quadros",	Color(0.3f, 0.3f, 0.3f));
 
 	mApplicationTimer.start();
 }
@@ -171,7 +171,7 @@ void Application::sdlEvent(const SDL_Event& ev)
 		{
 			if (SDL_GetTicks() > 5000)
 			{
-				LogDisplay::instance().setLogDisplay("New game controller found");
+				LogDisplay::instance().setLogDisplay("Novo controle encontrado");
 				InputManager::instance().rescanRealDevices();
 			}
 			break;
@@ -181,7 +181,7 @@ void Application::sdlEvent(const SDL_Event& ev)
 		{
 			if (SDL_GetTicks() > 5000)
 			{
-				LogDisplay::instance().setLogDisplay("Game controller was disconnected");
+				LogDisplay::instance().setLogDisplay("O controle foi desconectado");
 				InputManager::instance().rescanRealDevices();
 			}
 			break;
@@ -243,8 +243,8 @@ void Application::keyboard(const rmx::KeyboardEvent& ev)
 							const Configuration::RenderMethod newRenderMethod = (Configuration::instance().mRenderMethod == Configuration::RenderMethod::SOFTWARE) ? Configuration::RenderMethod::OPENGL_SOFT :
 																				(Configuration::instance().mRenderMethod == Configuration::RenderMethod::OPENGL_SOFT) ? Configuration::RenderMethod::OPENGL_FULL : Configuration::RenderMethod::SOFTWARE;
 							EngineMain::instance().switchToRenderMethod(newRenderMethod);
-							LogDisplay::instance().setLogDisplay((Configuration::instance().mRenderMethod == Configuration::RenderMethod::SOFTWARE) ? "Switched to pure software renderer" :
-																 (Configuration::instance().mRenderMethod == Configuration::RenderMethod::OPENGL_SOFT) ? "Switched to opengl-soft renderer" : "Switched to opengl-full renderer");
+							LogDisplay::instance().setLogDisplay((Configuration::instance().mRenderMethod == Configuration::RenderMethod::SOFTWARE) ? "Mudou para o renderizador puro de software" :
+																 (Configuration::instance().mRenderMethod == Configuration::RenderMethod::OPENGL_SOFT) ? "Mudou para o renderizador OpenGL-Soft" : "Mudou para o renderizador OpenGL-Full");
 						}
 						break;
 					}
@@ -291,14 +291,14 @@ void Application::keyboard(const rmx::KeyboardEvent& ev)
 					case SDLK_F3:
 					{
 						const InputManager::RescanResult result = InputManager::instance().rescanRealDevices();
-						LogDisplay::instance().setLogDisplay(String(0, "Re-scanned connected game controllers: %d found", result.mGamepadsFound));
+						LogDisplay::instance().setLogDisplay(String(0, "Controles de jogos reescaneados: %d encontrados.", result.mGamepadsFound));
 						break;
 					}
 
 					case SDLK_F4:
 					{
 						const bool switched = ControlsIn::instance().switchGamepads();
-						LogDisplay::instance().setLogDisplay(switched ? "Switched gamepads (switched)" : "Switched gamepads (original)");
+						LogDisplay::instance().setLogDisplay(switched ? "Controles trocados (trocados)" : "Controles trocados (original)");
 						break;
 					}
 
@@ -342,7 +342,7 @@ void Application::keyboard(const rmx::KeyboardEvent& ev)
 							Bitmap bitmap;
 							VideoOut::instance().getScreenshot(bitmap);
 							bitmap.save(L"screenshot.bmp");
-							LogDisplay::instance().setLogDisplay("Screenshot saved in 'screenshot.bmp'");
+							LogDisplay::instance().setLogDisplay("Captura de tela salva em 'screenshot.bmp'");
 						}
 						break;
 					}
@@ -358,7 +358,7 @@ void Application::keyboard(const rmx::KeyboardEvent& ev)
 					int volume = roundToInt(Configuration::instance().mAudioVolume * 100.0f);
 					volume = clamp((ev.key == SDLK_KP_PLUS) ? volume + 5 : volume - 5, 0, 100);
 					Configuration::instance().mAudioVolume = (float)volume / 100.0f;
-					LogDisplay::instance().setLogDisplay(String(0, "Audio volume: %d%%", volume));
+					LogDisplay::instance().setLogDisplay(String(0, "Volume do audio: %d%%", volume));
 					break;
 				}
 
@@ -377,7 +377,7 @@ void Application::keyboard(const rmx::KeyboardEvent& ev)
 						height = 224;
 
 						videoOut.setScreenSize(width, height);
-						LogDisplay::instance().setLogDisplay("Changed render resolution to " + std::to_string(width) + " x " + std::to_string(height) + " pixels");
+						LogDisplay::instance().setLogDisplay("Alterou a resolucao de renderizacao para " + std::to_string(width) + " x " + std::to_string(height) + " pixels");
 					}
 					break;
 				}
@@ -722,7 +722,7 @@ void Application::triggerGameRecordingSave()
 	{
 		WString filename;
 		const uint32 numFrames = mSimulation->saveGameRecording(&filename);
-		LogDisplay::instance().setLogDisplay(String(0, "Saved recording of last %d seconds in '%s'", numFrames / 60, *filename.toString()));
+		LogDisplay::instance().setLogDisplay(String(0, "Salvou a gravacao dos ultimos %d segundos em '%s'", numFrames / 60, *filename.toString()));
 	}
 }
 
