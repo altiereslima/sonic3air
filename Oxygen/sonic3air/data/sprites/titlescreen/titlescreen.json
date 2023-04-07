@@ -15,7 +15,7 @@
 	"title_screen_cr":    { "File": "title_screen.png", "Rect": "0,46,72,18" },
 
 	// Sonic & Knuckles title screen
-	"bg_title_screen_sk": { "File": "title_sk_background.bmp", "Center": "0,112" },
+	"bg_title_screen_sk": { "File": "title_sk_background.bmp", "Center": "8,112" },
 	"bg_title_screen_sk2":{ "File": "title_sk_foreground_extension.bmp", "Center": "-24,-152" }
 
 }

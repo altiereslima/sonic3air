@@ -291,7 +291,7 @@ void Application::keyboard(const rmx::KeyboardEvent& ev)
 					case SDLK_F3:
 					{
 						const InputManager::RescanResult result = InputManager::instance().rescanRealDevices();
-						LogDisplay::instance().setLogDisplay(String(0, "Controles de jogos reescaneados: %d encontrados.", result.mGamepadsFound));
+						LogDisplay::instance().setLogDisplay(String(0, "Controles de jogos reescaneados: encontrado %d.", result.mGamepadsFound));
 						break;
 					}
 
