@@ -231,8 +231,8 @@ OptionsMenu::OptionsMenu(MenuBackground& menuBackground) :
 		entries.addEntry<OptionsMenuEntry>()
 			.setUseSmallFont(true)
 			.initEntry("Sincronizar fantasmas", option::GHOST_SYNC)
-			.addOption("Desativado", 0)
-			.addOption("Ativado", 1);
+			.addOption("Desativar", 0)
+			.addOption("Ativar", 1);
 
 		// TEST
 		//  -> TODO: Needs support for a label text like "Channel" and possibly some explanation text as well
@@ -257,8 +257,8 @@ OptionsMenu::OptionsMenu(MenuBackground& menuBackground) :
 			.setDefaultValue(-1)
 			.initEntry("Gravar depuracao do jogo", option::GAME_RECORDING_MODE)
 			.addOption("Auto (Padrao)", -1)
-			.addOption("Desativado", 0)
-			.addOption("Ativado", 1);
+			.addOption("Desativar", 0)
+			.addOption("Ativar", 1);
 	}
 
 	// Display tab
@@ -383,7 +383,7 @@ OptionsMenu::OptionsMenu(MenuBackground& menuBackground) :
 			.addOption("Sonic & Knuckles", 1)
 			.addOption("Selecionar por zona", 0x10);
 
-		entries.addEntry<OptionsMenuEntry>().initEntry("Tema Super/Hyper:", option::SUPER_THEME)
+		entries.addEntry<OptionsMenuEntry>().initEntry("Tema Super/Hiper:", option::SUPER_THEME)
 			.addOption("Musica normal da fase", 0)
 			.addOption("Musica rapida da fase", 1)
 			.addOption("Sonic 2", 2)
@@ -432,7 +432,7 @@ OptionsMenu::OptionsMenu(MenuBackground& menuBackground) :
 
 		entries.addEntry<TitleMenuEntry>().initEntry("Selecao de musica");
 
-		entries.addEntry<OptionsMenuEntry>().initEntry("Chefe Armadilha Laser FBZ:", option::FBZ2_MIDBOSS_TRACK)
+		entries.addEntry<OptionsMenuEntry>().initEntry("Chefe Laser Trap da FBZ:", option::FBZ2_MIDBOSS_TRACK)
 			.addOption("Musica Mini-chefe", 1)
 			.addOption("Musica chefe principal", 0);
 
@@ -553,9 +553,9 @@ OptionsMenu::OptionsMenu(MenuBackground& menuBackground) :
 		GameMenuEntries& entries = tab.mMenuEntries;
 
 
-		entries.addEntry<TitleMenuEntry>().initEntry("Niveis");
+		entries.addEntry<TitleMenuEntry>().initEntry("Fases");
 
-		entries.addEntry<OptionsMenuEntry>().initEntry("Esquemas de niveis:", option::LEVEL_LAYOUTS)
+		entries.addEntry<OptionsMenuEntry>().initEntry("Estilo dos fases:", option::LEVEL_LAYOUTS)
 			.addOption("Sonic 3", 0)
 			.addOption("Sonic 3 & Knuckles", 1)
 			.addOption("Sonic 3 A.I.R.", 2);
@@ -572,16 +572,16 @@ OptionsMenu::OptionsMenu(MenuBackground& menuBackground) :
 			.addOption("Todos os personagens", 1);
 
 		entries.addEntry<OptionsMenuEntry>().initEntry("Fantasmas de Sandopolis:", option::SOZ_GHOSTSPAWN)
-			.addOption("Desativado", 1)
-			.addOption("Ativado", 0);
+			.addOption("Desativar", 1)
+			.addOption("Ativar", 0);
 
 		entries.addEntry<OptionsMenuEntry>().initEntry("Chefe Ato 2 de Lava Reef:", option::LRZ2_BOSS)
 			.addOption("8 acertos", 1)
 			.addOption("14 acertos (original)", 0);
 
 		entries.addEntry<OptionsMenuEntry>().initEntry("Manter escudo apos zona:", option::MAINTAIN_SHIELDS)
-			.addOption("Desativado", 0)
-			.addOption("Ativado", 1);
+			.addOption("Desativar", 0)
+			.addOption("Ativar", 1);
 
 
 		entries.addEntry<TitleMenuEntry>().initEntry("Duelo crono");
@@ -654,7 +654,7 @@ OptionsMenu::OptionsMenu(MenuBackground& menuBackground) :
 			entries.addEntry<OptionsMenuEntry>().initEntry("Visibilidade:",   option::VGAMEPAD_OPACITY).addPercentageOptions(0, 100, 10);
 			entries.addEntry<OptionsMenuEntry>().initEntry("Tamanho do D-Pad:",	option::VGAMEPAD_DPAD_SIZE).addNumberOptions(50, 150, 10);
 			entries.addEntry<OptionsMenuEntry>().initEntry("Tamanho dos botoes:", option::VGAMEPAD_BUTTONS_SIZE).addNumberOptions(50, 150, 10);
-			entries.addEntry<OptionsMenuEntry>().initEntry("Definir esquema do controle virtual...", option::VGAMEPAD_SETUP);
+			entries.addEntry<OptionsMenuEntry>().initEntry("Definir estilo do controle virtual...", option::VGAMEPAD_SETUP);
 		}
 
 
@@ -736,12 +736,12 @@ OptionsMenu::OptionsMenu(MenuBackground& menuBackground) :
 		entries.addEntry<TitleMenuEntry>().initEntry("Acessibilidade");
 
 		entries.addEntry<OptionsMenuEntry>().initEntry("Vidas infinitas:", option::INFINITE_LIVES)
-			.addOption("Desativado", 0)
-			.addOption("Ativado", 1);
+			.addOption("Desativar", 0)
+			.addOption("Ativar", 1);
 
 		entries.addEntry<OptionsMenuEntry>().initEntry("Tempo infinito:", option::INFINITE_TIME)
-			.addOption("Desativado", 0)
-			.addOption("Ativado", 1);
+			.addOption("Desativar", 0)
+			.addOption("Ativar", 1);
 
 
 		entries.addEntry<TitleMenuEntry>().initEntry("Variedade do jogo");
@@ -764,7 +764,7 @@ OptionsMenu::OptionsMenu(MenuBackground& menuBackground) :
 
 		entries.addEntry<TitleMenuEntry>().initEntry("Fases especiais");
 
-		entries.addEntry<OptionsMenuEntry>().initEntry("Esquema de fases especiais:", option::RANDOM_SPECIALSTAGES)
+		entries.addEntry<OptionsMenuEntry>().initEntry("Estilo de fases especiais:", option::RANDOM_SPECIALSTAGES)
 			.addOption("Original", 0)
 			.addOption("Gerado aleatoriamente", 1);
 
