@@ -56,10 +56,10 @@ void CheatSheetOverlay::render()
 		// Always available
 		"Alt+Enter", "Alternar tela cheia",
 		"Alt+F/G",   "Mudar metodo de redimensionamento",
-		"Alt+H",     "Mudar metodo de sincronizacao de quadros",
+		"Alt+H",     "Mudar metodo de sincronia de quadros",
 		"Alt+B",     "Mudar desfoque de fundo",
 		"Alt+P",     "Mudar exibicao de desempenho",
-		"F2",        "Salvar gravacao do jogo (para depuracao)",
+		"F2",        "Salvar gravacao do jogo para depuracao",
 		"F3",        "Pesquisar controles conectados",
 		"F4",        "Trocar controles do jogador 1/2",
 
@@ -89,7 +89,7 @@ void CheatSheetOverlay::render()
 	drawer.drawRect(mRect, Color(0.1f, 0.1f, 0.1f, alpha * 0.6f));
 
 	Recti rct(roundToInt(mRect.x) + 20, roundToInt(mRect.y) + 16, 40, 20);
-	drawer.printText(font, rct, "Visao geral das teclas de atalho - mostrar/ocultar com F1", 1, Color(0.5f, 1.0f, 1.0f, alpha));
+	drawer.printText(font, rct, "Visao geral de teclas de atalho - exibir/ocultar com F1", 1, Color(0.5f, 1.0f, 1.0f, alpha));
 	rct.y += 26;
 
 	for (size_t i = 0; i < NUM_TEXTS; ++i)

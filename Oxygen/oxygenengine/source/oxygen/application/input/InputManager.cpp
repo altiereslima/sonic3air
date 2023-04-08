@@ -991,11 +991,11 @@ bool InputManager::isPressed(SDL_Joystick* joystick, const ControlInput& input)
 				const float value = (float)SDL_JoystickGetAxis(joystick, input.mIndex / 2) / 32767.0f;
 				if ((input.mIndex % 2) == 0)
 				{
-					return (value < -0.25f);
+					return (value < -0.535f);
 				}
 				else
 				{
-					return (value > 0.25f);
+					return (value > 0.535f);
 				}
 			}
 

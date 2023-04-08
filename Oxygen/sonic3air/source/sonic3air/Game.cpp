@@ -122,9 +122,9 @@ void Game::update(float timeElapsed)
 			if (pressed)
 			{
 				if (FTX::keyState(SDLK_LSHIFT))
-					GameApp::instance().showUnlockedWindow(SecretUnlockedWindow::EntryType::SECRET, "Secret unlocked!", "Knuckles & Tails character combination can now be selected in Normal Game and Act Select.");
+					GameApp::instance().showUnlockedWindow(SecretUnlockedWindow::EntryType::SECRET, "Segredo desbloqueado!", "A combinação de personagens Knuckles e Tails agora pode ser selecionada no Jogo Normal e na Escolha de Ato.");
 				else
-					GameApp::instance().showUnlockedWindow(SecretUnlockedWindow::EntryType::ACHIEVEMENT, "Achievement unlocked!", "Cheated an achievement. Well done!");
+					GameApp::instance().showUnlockedWindow(SecretUnlockedWindow::EntryType::ACHIEVEMENT, "Conquista desbloqueada!", "Trapaceou em uma conquista. Parabéns!");
 			}
 		}
 	}
@@ -291,7 +291,7 @@ uint32 Game::getSetting(uint32 settingId, bool ignoreGameMode) const
 void Game::setSetting(uint32 settingId, uint32 value)
 {
 	const SharedDatabase::Setting* setting = SharedDatabase::getSetting(settingId);
-	RMX_CHECK(nullptr != setting, "Setting not found", return);
+	RMX_CHECK(nullptr != setting, "Configuracao não encontrada", return);
 	setting->mCurrentValue = value;
 }
 
@@ -313,7 +313,7 @@ void Game::checkForUnlockedSecrets()
 		{
 			// Unlock secret now
 			mPlayerProgress.setSecretUnlocked(secret.mType);
-			GameApp::instance().showUnlockedWindow(SecretUnlockedWindow::EntryType::SECRET, "Secret unlocked!", secret.mName);
+			GameApp::instance().showUnlockedWindow(SecretUnlockedWindow::EntryType::SECRET, "Segredo desbloqueado!", secret.mName);
 		}
 	}
 }
@@ -892,11 +892,11 @@ void Game::setAchievementComplete(uint32 achievementId)
 		SharedDatabase::Achievement* achievement = SharedDatabase::getAchievement(achievementId);
 		if (nullptr != achievement)
 		{
-			GameApp::instance().showUnlockedWindow(SecretUnlockedWindow::EntryType::ACHIEVEMENT, "Achievement complete", achievement->mName);
+			GameApp::instance().showUnlockedWindow(SecretUnlockedWindow::EntryType::ACHIEVEMENT, "Conquista completa", achievement->mName);
 		}
 		else
 		{
-			RMX_ERROR("Achievement not found", );
+			RMX_ERROR("Conquista não encontrada", );
 		}
 
 		checkForUnlockedSecrets();
@@ -912,12 +912,12 @@ bool Game::isSecretUnlocked(uint32 secretId)
 void Game::setSecretUnlocked(uint32 secretId)
 {
 	SharedDatabase::Secret* secret = SharedDatabase::getSecret(secretId);
-	RMX_CHECK(nullptr != secret, "Secret with ID " << secretId << " not found", return);
+	RMX_CHECK(nullptr != secret, "Segredo com ID " << secretId << " nao encontrado", return);
 
 	if (!mPlayerProgress.isSecretUnlocked(secretId))
 	{
 		mPlayerProgress.setSecretUnlocked(secretId);
-		const char* text = (secret->mType == SharedDatabase::Secret::SECRET_DOOMSDAY_ZONE) ? "Unlocked in Act Select" : "Found hidden secret!";
+		const char* text = (secret->mType == SharedDatabase::Secret::SECRET_DOOMSDAY_ZONE) ? "Desbloqueado na Escolha de Ato" : "Segredo oculto encontrado!";
 		GameApp::instance().showUnlockedWindow(SecretUnlockedWindow::EntryType::SECRET, text, secret->mName);
 		mPlayerProgress.save();
 	}
