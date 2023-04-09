@@ -575,11 +575,11 @@ void ModsMenu::render()
 		rect.y += 22;
 
 		Color color(0.8f, 0.9f, 1.0f, mVisibility);
-		drawer.printText(global::mOxyfontSmall, rect, "Confira o manual do jogo em PDF para obter instruções", 1, color);
+		drawer.printText(global::mOxyfontSmall, rect, "Confira o manual do jogo em PDF para obter instrucoes", 1, color);
 		rect.y += 14;
 		drawer.printText(global::mOxyfontSmall, rect, "sobre como instalar mods.", 1, color);
 		rect.y += 18;
-		drawer.printText(global::mOxyfontSmall, rect, "Observe que você terá que reiniciar o jogo", 1, color);
+		drawer.printText(global::mOxyfontSmall, rect, "Observe que você tera que reiniciar o jogo", 1, color);
 		rect.y += 14;
 		drawer.printText(global::mOxyfontSmall, rect, "para que ele procure por novos mods.", 1, color);
 		rect.y += 32;
@@ -874,7 +874,7 @@ void ModsMenu::refreshDependencies(ModMenuEntry& modMenuEntry, size_t modIndex)
 				// Show warning
 				ModMenuEntry::Remark& remark = vectorAdd(modMenuEntry.mRemarks);
 				remark.mIsError = otherModInfo.mIsRequired;
-				remark.mText = std::string("This mod needs to be placed ") + (otherShouldBeHigherPrio ? "below" : "above") + " \"" + otherMod->mDisplayName + "\"";
+				remark.mText = std::string("Este mod tem de ser colocado ") + (otherShouldBeHigherPrio ? "abaixo" : "acima") + " \"" + otherMod->mDisplayName + "\"";
 			}
 		}
 		else
@@ -886,11 +886,11 @@ void ModsMenu::refreshDependencies(ModMenuEntry& modMenuEntry, size_t modIndex)
 				remark.mIsError = true;
 				if (nullptr != otherMod)
 				{
-					remark.mText = std::string("This mod requires \"") + otherMod->mDisplayName + "\" to be activated as well, and placed " + (otherShouldBeHigherPrio ? "above" : "below") + " this one";
+					remark.mText = std::string("Este mod requer que \"") + otherMod->mDisplayName + "\" tambem esteja ativado e colocado  " + (otherShouldBeHigherPrio ? "acima" : "abaixo") + " deste";
 				}
 				else
 				{
-					remark.mText = std::string("This mod requires \"") + otherModInfo.mDisplayName + "\" in order to work (you might need to search for that mod online)";
+					remark.mText = std::string("Este mod requer \"") + otherModInfo.mDisplayName + "\" para funcionar (talvez você precise procurar esse mod online)";
 				}
 			}
 		}
