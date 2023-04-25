@@ -51,7 +51,7 @@ function void fn04964a()
 			objA1.flags2a |= char.flag.IN_AIR
 			u8[A1 + 0x2e] = 0x01
 			u8[A1 + 0x30] = 0xff		// "char.rotation.x.count"
-			u8[A1 + 0x31] = 0x04        // "char.rotation.x.speed"
+			u8[A1 + 0x31] = 0x04		// "char.rotation.x.speed"
 
 			u8[A1 + 0x40] = 0
 			u8[A2] = 1
@@ -420,6 +420,6 @@ function void fn049a0e()
 
 	A2 = 0xffff0000 + objA0.value3e
 	D0.u16 = 0x1d + D0.u16 * 6
-	if (u8[A2 + D0.s16] >= 3)
-		u8[A2 + D0.s16] -= 2
+	if (u8[A2 + D0.u16] >= 3)
+		u8[A2 + D0.u16] -= 2
 }

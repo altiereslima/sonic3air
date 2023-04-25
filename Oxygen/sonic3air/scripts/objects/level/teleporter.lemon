@@ -356,12 +356,12 @@ function void fn045866()
 		A1 = 0x04670c
 		if (global.zone == 0x0a)	// Sky Sanctuary Zone
 		{
-			u32[0xfffffc58] = u32[A1 + D0.s16]
+			u32[0xfffffc58] = u32[A1 + D0.u16]
 		}
 		else
 		{
-			u16[0xfffffc62] = u16[A1 + D0.s16 + 0x02]
-			u16[0xfffffc64] = u16[A1 + D0.s16]
+			u16[0xfffffc62] = u16[A1 + D0.u16 + 2]
+			u16[0xfffffc64] = u16[A1 + D0.u16]
 		}
 	}
 }
@@ -727,10 +727,12 @@ function void fn0458b4()
 
 	if (global.zone == 0x03)
 	{
+		// Carnival Night Zone
 		objA0.sprite_attributes = (sprite_attribute.PALETTE.LINE1 | 0x04ee)
 	}
 	else if (global.zone == 0x16)
 	{
+		// Hidden Palace Zone
 		objA0.sprite_attributes = (sprite_attribute.PALETTE.LINE3 | 0x052e)
 	}
 	else

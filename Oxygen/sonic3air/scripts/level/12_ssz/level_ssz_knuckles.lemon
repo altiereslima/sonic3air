@@ -721,7 +721,7 @@ function void fn059194()
 //# address-hook(0x05b42a) end(0x05b470)
 function void fn05b42a()
 {
-	Kosinski.addToDMAQueue(0x0de362, 0x7de0) 		// "& Knuckles" subtitle
+	Kosinski.addToDMAQueue(0x0de362, 0x7de0)		// "& Knuckles" subtitle
 
 	D0.u16 = (global.characters & 0x03) - 2
 	D1 = 0
@@ -738,7 +738,7 @@ function void fn05b42a()
 		D1.u16 += (u8[0xfffffa88] == 0) ? 0x04 : 0x08
 	}
 
-	A2 = u32[0x05b472 + D1.s16]
+	A2 = u32[0x05b472 + D1.u16]
 	call A2
 }
 
